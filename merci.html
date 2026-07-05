@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inscription confirmée – Koko Lawson</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: #002060;
+      color: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(198,160,22,0.3);
+      border-radius: 16px;
+      max-width: 560px;
+      width: 100%;
+      padding: 3rem 2.5rem;
+      text-align: center;
+    }
+
+    .checkmark {
+      width: 64px;
+      height: 64px;
+      background: rgba(15,118,110,0.2);
+      border: 2px solid #0f766e;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 2rem;
+    }
+
+    .checkmark svg {
+      width: 32px;
+      height: 32px;
+      stroke: #0f766e;
+      stroke-width: 2.5;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 1.25rem;
+      color: #ffffff;
+    }
+
+    h1 span {
+      color: #c6a016;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 1rem;
+    }
+
+    .highlight {
+      background: rgba(198,160,22,0.1);
+      border-left: 3px solid #c6a016;
+      border-radius: 4px;
+      padding: 1rem 1.25rem;
+      text-align: left;
+      margin: 1.5rem 0;
+    }
+
+    .highlight p {
+      margin-bottom: 0;
+      font-size: 0.95rem;
+    }
+
+    .highlight strong {
+      color: #c6a016;
+    }
+
+    .cta {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.85rem 2rem;
+      background: #0f766e;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: background 0.2s;
+    }
+
+    .cta:hover {
+      background: #0d5f58;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.5);
+      margin-top: 2.5rem;
+      letter-spacing: 0.02em;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="checkmark">
+      <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+
+    <h1>Tu es bien <span>inscrite&nbsp;!</span></h1>
+
+    <p>Bienvenue dans la communauté Koko. Tu vas recevoir un email de confirmation d'ici quelques minutes.</p>
+
+    <div class="highlight">
+      <p>📬 <strong>Pense à vérifier tes spams</strong> si tu ne reçois rien dans les 5 minutes, et déplace l'email dans ta boîte principale pour ne rater aucun live.</p>
+    </div>
+
+    <p>Chaque mois, je t'invite à un live d'1h pour qu'on se rencontre et que tu me poses toutes tes questions — sans filtre.</p>
+
+    <a href="https://kokolawson.com" class="cta">Retour sur le site →</a>
+  </div>
+
+  <div class="logo">Koko Lawson</div>
+</body>
+</html>
