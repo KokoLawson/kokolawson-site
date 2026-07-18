@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Coaching individuel pour profils experts : Séance Déclic, Parcours Cap, Prends ta place | Koko Lawson Adoté</title>
-<meta name="description" content="Trois formats de coaching individuel en ligne : Séance Déclic (250 €), Parcours Cap 6 séances (1 300 €), Prends ta place 8 séances + 4 ateliers (2 300 €). Méthode CInA®.">
+<title>Coaching individuel pour profils experts : Focus, Maîtrise, Prends ta place | Koko Lawson Adoté</title>
+<meta name="description" content="Trois parcours de coaching individuel en ligne : Focus 5 séances (900 €), Maîtrise 8 séances (1 400 €), Prends ta place 12 séances + 4 ateliers (2 300 €). Méthode CInA®.">
 <link rel="canonical" href="https://kokolawson.com/accompagnement/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Coaching individuel pour profils experts : Séance Déclic, Parcours Cap, Prends ta place | Koko Lawson Adoté">
-<meta property="og:description" content="Trois formats de coaching individuel en ligne : Séance Déclic (250 €), Parcours Cap 6 séances (1 300 €), Prends ta place 8 séances + 4 ateliers (2 300 €). Méthode CInA®.">
+<meta property="og:title" content="Coaching individuel pour profils experts : Focus, Maîtrise, Prends ta place | Koko Lawson Adoté">
+<meta property="og:description" content="Trois parcours de coaching individuel en ligne : Focus 5 séances (900 €), Maîtrise 8 séances (1 400 €), Prends ta place 12 séances + 4 ateliers (2 300 €). Méthode CInA®.">
 <meta property="og:url" content="https://kokolawson.com/accompagnement/">
 <meta property="og:image" content="https://kokolawson.com/photo-koko.jpg">
 <meta property="og:locale" content="fr_FR">
@@ -32,9 +32,9 @@
   em{font-style:italic;color:var(--gold)}
   .wrap{max-width:1060px;margin:0 auto;padding:0 24px}
   section{padding:76px 0}
-  .kicker{display:inline-block;font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:16px}
+  .kicker{display:inline-block;font-family:var(--mono);font-size:20px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:16px}
   .kicker::before{content:"- ";color:var(--gold)}
-  h2{font-size:clamp(27px,3.8vw,38px);color:var(--navy);line-height:1.22;margin-bottom:18px}
+  h2{font-size:clamp(22px,3vw,30px);color:var(--navy);line-height:1.22;margin-bottom:18px}
   .lead{font-size:18.5px;color:var(--muted);max-width:660px}
   /* NAV */
   nav{position:sticky;top:0;background:rgba(250,249,246,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:50}
@@ -104,12 +104,16 @@
   .badge{position:absolute;top:-12px;left:28px;background:var(--gold);color:var(--navy-deep);font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;padding:4px 12px;border-radius:3px}
   .tier .promesse{font-family:var(--serif);font-style:italic;color:var(--teal);font-size:17px;margin-bottom:6px}
   .tier h3{color:var(--navy);font-size:24px;margin-bottom:10px;font-weight:600}
-  .price{font-size:30px;font-family:var(--serif);color:var(--navy);font-weight:600}
-  .price small{font-size:12.5px;color:var(--muted);font-family:var(--mono);font-weight:400}
+  .price{font-size:30px;font-family:var(--serif);color:var(--navy);font-weight:600;display:block}
+  .fmt{font-family:var(--mono);font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:.03em}
   .tier ul{list-style:none;margin:18px 0 24px;flex:1}
   .tier li{padding:7px 0 7px 24px;position:relative;font-size:15px}
   .tier li::before{content:"-";position:absolute;left:0;color:var(--gold);font-weight:700}
   .tier li.atelier::before{content:"+";color:var(--teal)}
+  .surmesure{margin-top:28px;font-size:16px;color:var(--ink)}
+  .surmesure b{color:var(--navy)}
+  .surmesure a{color:var(--teal);font-weight:700;text-decoration:none}
+  .surmesure a:hover{text-decoration:underline}
   /* STEPS */
   .steps{counter-reset:s;margin-top:30px}
   .step{display:grid;grid-template-columns:64px 1fr;gap:18px;padding:22px 0;border-bottom:1px solid var(--line)}
@@ -133,10 +137,18 @@
   .page.active{display:block}
   .notice{background:#fff8e1;border:1px solid #e8d48a;border-radius:8px;padding:12px 18px;font-size:14px;color:#6b5a10;max-width:1060px;margin:10px auto 0}
   .minihero{background:linear-gradient(165deg,var(--navy),var(--navy-deep));color:#fff;padding:70px 0 58px}
-  .minihero h1{font-size:clamp(28px,4.2vw,42px);line-height:1.2;font-weight:500}
+  .minihero h1{font-size:clamp(24px,3vw,32px);line-height:1.25;font-weight:500}
   .minihero p.sub{color:#b9c3dd;font-size:18px;max-width:620px;margin-top:14px}
-  .epi{font-family:var(--mono);font-size:12px;color:var(--teal)}
-  @media(max-width:820px){.manif .grid{grid-template-columns:1fr}.portrait{max-width:320px}}
+  .epi{font-family:var(--mono);font-size:20px;letter-spacing:.1em;color:var(--teal);display:inline-block;margin-bottom:10px}
+  @media(max-width:820px){.manif .grid{grid-template-columns:1fr}.portrait{max-width:320px}.kicker{font-size:16px}.epi{font-size:15px}}
+  /* ---- FAQ ---- */
+  .faq details{border-bottom:1px solid var(--line);padding:18px 0}
+  .faq summary{font-family:var(--serif);font-size:19px;color:var(--navy);font-weight:600;cursor:pointer;list-style:none;position:relative;padding-right:36px}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";position:absolute;right:4px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:22px;color:var(--gold);transition:.2s}
+  .faq details[open] summary::after{content:"\2013"}
+  .faq details p{margin-top:12px;color:var(--muted);font-size:15.5px;line-height:1.7}
+  .faq details p b{color:var(--ink)}
   /* ---- Navigation & confort mobile ---- */
   @media(max-width:820px){
     .navin{height:60px;flex-direction:row;align-items:center;justify-content:space-between}
@@ -167,6 +179,40 @@
   #sib-container a{color:var(--teal)}
 </style>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Est-ce que le coaching va vraiment marcher pour moi ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Personne ne peut garantir un résultat en coaching. Ce que j'apporte : une méthode éprouvée (CInA®), des challenges concrets entre les séances et une note moyenne de 9.8/10. Tout commence par une Séance Découverte offerte de 45 minutes et un temps de réflexion de 48h pour décider." }
+    },
+    {
+      "@type": "Question",
+      "name": "5 ou 8 mois de coaching, c'est long, non ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "C'est le principe : un mécanisme construit en 15 ans ne se déloge pas en 3 semaines. Le rythme espacé (une séance toutes les 3 semaines) fait des intervalles ton terrain d'entraînement réel. La confiance fonctionne comme les intérêts composés : de petits gains répétés produisent en quelques mois ce qu'aucun sprint ne produit." }
+    },
+    {
+      "@type": "Question",
+      "name": "Comment choisir entre les parcours Focus, Maîtrise et Prends ta place ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Focus dénoue des situations précises (5 séances, 900 €). Maîtrise déloge un fonctionnement qui se répète (8 séances, 1 400 €). Prends ta place transforme la posture en profondeur avec 4 ateliers (12 séances, 2 300 €). Le parcours adapté se détermine ensemble en Séance Découverte, offerte." }
+    },
+    {
+      "@type": "Question",
+      "name": "J'ai déjà essayé un accompagnement et ça n'a pas marché, qu'est-ce qui serait différent ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Un accompagnement qui n'a pas marché dit souvent que l'alliance ou le moment n'étaient pas les bons. La Séance Découverte offerte permet de vérifier avant tout engagement que ma façon de travailler te correspond, et chaque séance se prolonge par un challenge concret dans ton quotidien." }
+    },
+    {
+      "@type": "Question",
+      "name": "Le coaching est-il finançable via le CPF ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Non, le coaching n'est pas éligible au CPF : le CPF finance des formations certifiantes, et le coaching n'en est pas une. L'investissement est personnel, réglé en une fois, et les séances restent strictement confidentielles." }
+    }
+  ]
+}
+</script>
+
 </head>
 <body>
 <nav>
@@ -188,48 +234,55 @@
 <header class="minihero"><div class="wrap">
     <span class="epi">COACHING INDIVIDUEL · PROFILS EXPERTS</span>
     <h1>La compétence te fait exister. <em>La posture te fait rayonner.</em></h1>
-    <p class="sub">Trois formats, une méthode. Le prix par séance baisse à mesure que tu t'engages, et les 4 ateliers sont l'exclusivité du programme complet.</p>
+    <p class="sub">Trois parcours, une méthode, un même rythme : une séance toutes les 3 semaines. Le prix par séance baisse à mesure que tu t'engages, et les 4 ateliers sont l'exclusivité du programme complet.</p>
   </div></header>
 
   <section><div class="wrap">
     <div class="tiers">
       <div class="tier">
-        <p class="promesse">Un point précis à dénouer</p><h3>La Séance Déclic</h3>
-        <div class="price">250 € <small>SÉANCE UNIQUE × 1H</small></div>
+        <p class="promesse">Des situations précises à dénouer</p><h3>Focus</h3>
+        <span class="price">900 €</span>
+        <span class="fmt">5 SÉANCES × 1H · ~3 MOIS</span>
         <ul>
-          <li>Une situation qui coince : décision, demande à formuler, prise de parole imminente</li>
-          <li>Tu repars avec une lecture claire et un levier à appliquer cette semaine</li>
-          <li>Déductible d'un parcours si tu continues</li>
+          <li>Pour dénouer ce qui coince et te coûte au quotidien : une prise de parole récurrente, une demande que tu n'oses pas formuler, une relation professionnelle difficile</li>
+          <li>Un objectif défini dès la première séance, un résultat observable à la dernière</li>
+          <li>Un format court et rythmé, orienté passage à l'action</li>
+          <li>Un challenge concret à relever entre les séances</li>
+          <li>Tu continues vers un autre parcours dans les 3 mois ? 300 € déjà payés s'y déduisent</li>
+          <li>Paiement en 1×</li>
         </ul>
-        <a class="btn ghost" href="mailto:contact@kokolawson.com?subject=S%C3%A9ance%20D%C3%A9clic%20%E2%80%94%20demande%20de%20cr%C3%A9neau">Réserver ma Séance Déclic par email</a>
+        <a class="btn ghost" href="/seance-decouverte/">Commencer par la Séance Découverte</a>
       </div>
       <div class="tier">
-        <p class="promesse">Un cap à passer, un mécanisme à déloger</p><h3>Parcours Cap</h3>
-        <div class="price">1 300 € <small>6 SÉANCES × 1H</small></div>
+        <p class="promesse">Un mécanisme à déloger</p><h3>Maîtrise</h3>
+        <span class="price">1 400 €</span>
+        <span class="fmt">8 SÉANCES (OUVERTURE 1H30 + 7 × 1H) · ~5 MOIS</span>
         <ul>
-          <li>Pour une échéance qui compte (promotion, assessment, transition) ou un fonctionnement qui se répète : te contenir, sur-préparer, attendre d'être sollicité·e</li>
+          <li>Pour quand ce n'est pas une situation qui coince, mais un fonctionnement qui se répète : te contenir en réunion, sur-préparer, attendre d'être sollicité·e, te dévaloriser</li>
+          <li>Une séance d'ouverture de 1h30 pour cartographier ton mécanisme en profondeur</li>
+          <li>Puis on installe la posture et on l'ancre : croyances, émotions, dynamiques relationnelles</li>
           <li>Méthode CInA® : Clarifier · Incarner · Ancrer</li>
-          <li>Un challenge concret entre chaque séance</li>
-          <li>Paiement en 1 à 3× sans frais</li>
+          <li>Paiement en 1×</li>
         </ul>
         <a class="btn ghost" href="/seance-decouverte/">Commencer par la Séance Découverte</a>
       </div>
       <div class="tier featured">
         <span class="badge">OFFRE PHARE · SUR CANDIDATURE</span>
         <p class="promesse">La transformation complète</p><h3>Prends ta place</h3>
-        <div class="price">2 300 € <small>8 SÉANCES × 1H + 4 ATELIERS · ~6 MOIS</small></div>
+        <span class="price">2 300 €</span>
+        <span class="fmt">12 SÉANCES (OUVERTURE 1H30 + 11 × 1H) + 4 ATELIERS · ~8 MOIS</span>
         <ul>
-          <li>Présence authentique, affirmation, valorisation de soi, sens et direction</li>
+          <li>Pour passer de l'expert·e invisible au leader qui prend sa place, sans te trahir : présence, affirmation, valorisation de soi, sens et direction</li>
           <li class="atelier">Atelier LinkedIn : optimiser son profil pour améliorer sa visibilité</li>
           <li class="atelier">Atelier Prise de parole : les clés d'une prise de parole réussie</li>
           <li class="atelier">Atelier Gestion des émotions</li>
           <li class="atelier">Atelier Oser la visibilité</li>
-          <li>Paiement en 3× (env. 800 €/mois) · facturation employeur possible</li>
+          <li>Paiement en 1×</li>
         </ul>
         <a class="btn" href="/seance-decouverte/">Candidater via la Séance Découverte</a>
       </div>
     </div>
-    <p style="margin-top:18px;font-size:14px;color:var(--muted);font-family:var(--mono)">Format sur mesure possible, on en parle en Séance Découverte.</p>
+    <p class="surmesure"><b>Besoin d'une séance unique ou d'un format sur mesure ?</b> On en parle en <a href="/seance-decouverte/">Séance Découverte</a>.</p>
   </div></section>
 
   <section class="alt"><div class="wrap">
@@ -251,6 +304,70 @@
       <div class="card"><p>Tu attends une solution rapide sans t'investir dans le processus.</p></div>
       <div class="card"><p>Tu penses que le problème vient uniquement des autres ou du système.</p></div>
     </div>
+  </div></section>
+
+  <section class="alt"><div class="wrap faq" style="max-width:860px">
+    <span class="kicker">Questions fréquentes</span>
+    <h2>Tu te demandes <em>peut-être…</em></h2>
+
+    <details>
+      <summary>Le coaching, c'est quoi exactement ? (Et qu'est-ce que ce n'est pas ?)</summary>
+      <p>Le coaching co-actif part d'une conviction : tu as déjà en toi les ressources pour avancer. Mon rôle n'est pas de te donner des conseils tout faits, c'est de poser les questions qui te permettent d'y voir clair, puis de t'aider à transformer ces prises de conscience en comportements concrets et durables. Ce qui te permettra de retrouver de la présence, de l'aisance et de l'élan dans ton quotidien professionnel.</p>
+      <p><b>Ce que ce n'est pas :</b> une formation (je ne te déroule pas un programme), du mentorat (je ne te dis pas quoi faire de ta carrière), ni une thérapie (on travaille sur ta situation présente et ta trajectoire ; si un sujet relève d'un accompagnement thérapeutique, je te le dis honnêtement). Et la symbolique des nombres ? Un outil optionnel, proposé uniquement si ça t'appelle : ce n'est pas de la voyance, ni une recette magique. C'est une grille de lecture de ta personnalité que j'assume précisément parce que je suis actuaire.</p>
+    </details>
+
+    <details>
+      <summary>Focus, Maîtrise, Prends ta place : comment savoir lequel est pour moi ?</summary>
+      <p>La différence tient en trois verbes. <b>Focus</b> dénoue des situations précises (une prise de parole qui coince, une demande à formuler). <b>Maîtrise</b> déloge un fonctionnement qui se répète (te contenir, sur-préparer, te dévaloriser). <b>Prends ta place</b> transforme ta posture en profondeur, avec quatre ateliers en plus.</p>
+      <p>Tu n'as pas à choisir seul·e : c'est ce qu'on détermine ensemble en Séance Découverte, et ma proposition écrite te recommande le parcours adapté, avec le pourquoi. Et pour lever un doute fréquent : j'accompagne des profils experts, femmes et hommes.</p>
+    </details>
+
+    <details>
+      <summary>Est-ce que ça va vraiment marcher pour moi ?</summary>
+      <p>Je vais te répondre en actuaire : personne ne peut te garantir un résultat en coaching, et méfie-toi de qui le promet. Le changement dépend de deux variables : le cadre que j'apporte (une méthode éprouvée, des challenges concrets entre les séances, de l'honnêteté, y compris quand c'est inconfortable) et ton engagement à expérimenter entre les séances.</p>
+      <p>Ce que je peux te montrer, ce sont les faits : une note moyenne de 9.8/10, des personnes qui prennent la parole là où elles se taisaient, posent des limites, changent de posture, et des prises de conscience qui arrivent souvent dès la première séance. L'ancrage durable, lui, se construit sur la durée du parcours et bien au-delà. Et c'est pour que tu ne paries pas à l'aveugle que tout commence par une séance offerte et un temps de réflexion de 48h pour décider.</p>
+    </details>
+
+    <details>
+      <summary>5, 8 mois, c'est long, non ?</summary>
+      <p>C'est long, oui. C'est même le principe.</p>
+      <p>Je sais que l'époque promet tout en 21 jours : la confiance en 5 étapes, le leadership en un week-end. Mais sois honnête avec toi-même : le mécanisme qu'on va déloger, tu l'as construit en 10 ou 15 ans. Personne ne désinstalle quinze ans de réflexes en trois semaines, et celles et ceux qui te le promettent te vendent une prise de conscience, pas une transformation.</p>
+      <p>Le rythme espacé n'est pas du remplissage, c'est la méthode : les trois semaines entre deux séances sont ton terrain d'entraînement. C'est là, en réunion réelle, face à de vrais décideurs, que tu testes, que tu rates parfois, que tu recommences, et que le nouveau comportement devient le tien, pas celui que tu joues en séance.</p>
+      <p>Et je vais te le dire en actuaire : la confiance fonctionne comme les intérêts composés. De petits gains, répétés à chaque séance et entre les séances, produisent en quelques mois ce qu'aucun sprint ne produit. 5 ou 8 mois, c'est 2 à 3 % d'une carrière de 20 ans qui te reste : le placement au meilleur ratio que tu feras cette année.</p>
+    </details>
+
+    <details>
+      <summary>J'ai déjà essayé un accompagnement, et ça n'a pas marché…</summary>
+      <p>Tu n'es pas seul·e : une des personnes que j'ai accompagnées est arrivée exactement avec ce doute, après un coaching qui n'avait rien donné. Ce qui l'a décidée, avec ses mots : « Koko comprend ces expériences de l'intérieur. »</p>
+      <p>Un accompagnement qui n'a pas marché ne dit pas que le coaching ne marche pas pour toi. Il dit souvent que l'alliance n'était pas la bonne, que le moment n'était pas le bon, ou que la méthode restait dans la conversation sans jamais passer dans ta réalité. C'est précisément ce que la Séance Découverte permet de vérifier avant tout engagement : est-ce que ma façon de travailler te correspond, à toi. Et ma méthode ne s'arrête pas aux prises de conscience : chaque séance se prolonge par un challenge concret dans ton quotidien, parce que c'est là que le changement se joue.</p>
+    </details>
+
+    <details>
+      <summary>Et si, en cours de parcours, ça ne me convient pas ?</summary>
+      <p>Tu le dis, le plus tôt possible : oser dire « ça ne me convient pas » fait partie du travail qu'on mène ensemble, et je préfère mille fois un ajustement à un silence poli. Dans la grande majorité des cas, en parler réoriente le travail et débloque la suite : le parcours s'adapte à toi, pas l'inverse.</p>
+      <p>L'engagement sur un parcours est ferme, et je l'assume : la transformation demande de la continuité, et c'est aussi pour ça que je ne te laisse jamais t'engager à l'aveugle. Tout est fait pour que tu décides en connaissance de cause avant de signer : la Séance Découverte offerte, ma proposition écrite valable 48h que tu étudies à tête reposée, et un échange où toutes tes questions sont bienvenues.</p>
+      <p>Et si un jour tu choisis d'arrêter, la relation ne se termine jamais brutalement : une séance de clôture rassemble ce que tu as appris et pose la stratégie de ta suite. On finit proprement, toujours.</p>
+    </details>
+
+    <details>
+      <summary>En pratique : comment se déroulent les séances ?</summary>
+      <p>Tout se passe en ligne, en tête-à-tête, avec un replay et une retranscription disponibles dans ton espace. Les séances durent 1h (1h30 pour la séance d'ouverture de Maîtrise et de Prends ta place), à un rythme d'une séance toutes les 3 semaines, pour laisser le temps d'expérimenter entre les séances.</p>
+      <p>On cale les créneaux ensemble : j'exerce moi-même en parallèle de mon métier d'actuaire, je connais la réalité d'un agenda chargé, et des créneaux existent en soirée, sur la pause déjeuner et le samedi matin. Un imprévu ? Une séance se reporte sans frais en me prévenant au moins 48h à l'avance. Et si on sent ensemble qu'une séance en présentiel apporterait quelque chose, c'est possible, quand nos agendas et la géographie le permettent.</p>
+    </details>
+
+    <details>
+      <summary>Est-ce qu'on peut aborder des sujets personnels dans les séances ?</summary>
+      <p>Oui, et c'est même inévitable, dans le bon sens du terme. Le coaching co-actif travaille avec la personne entière, pas avec la fiche de poste : la confiance, les limites, la place qu'on ose prendre sont les mêmes mécanismes au bureau, en famille et partout ailleurs. Les découper serait artificiel, et tu le sais déjà si tu rayonnes à la maison et t'éteins au travail.</p>
+      <p>Concrètement, la porte d'entrée est souvent professionnelle (une réunion, une promotion, une transition), et le fil qu'on tire traverse parfois le personnel : une vieille croyance, une loyauté, un déséquilibre de vie. On y va si c'est utile à ton objectif, toujours à ton rythme, et tout reste strictement confidentiel. Une seule limite, déjà posée plus haut : si un sujet relève d'un accompagnement thérapeutique, je te le dis honnêtement.</p>
+    </details>
+
+    <details>
+      <summary>C'est confidentiel ? Est-ce que c'est finançable via le CPF ?</summary>
+      <p>Ce qui se dit en séance reste en séance, conformément à la déontologie du coaching co-actif, sans exception. Le replay et la retranscription de tes séances ne sont accessibles qu'à toi, dans ton espace privé.</p>
+      <p>Côté financement : non, le coaching n'est pas éligible au CPF, le CPF finance des formations certifiantes, et le coaching n'en est pas une (voir la première question : ce n'est justement pas une formation). L'investissement est personnel, réglé en une fois. Et il y a un avantage caché à ça : tu n'as de comptes à rendre à personne, ni RH, ni manager, ce travail t'appartient entièrement.</p>
+    </details>
+
+    <p style="margin-top:26px">Une question qui n'est pas ici ? <a href="mailto:contact@kokolawson.com" style="color:var(--teal);font-weight:700">Écris-moi</a>, ou pose-la en Séance Découverte.</p>
   </div></section>
 
   <div class="cta-band">
