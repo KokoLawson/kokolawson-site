@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Et si rien ne change une fois de retour au bureau ? | Koko Lawson Adoté</title>
+<meta name="description" content="Pourquoi le travail sur soi ne tient pas au bureau : ce n'est pas un manque d'information, c'est une question de pondération. Un cas client, un échec personnel et quatre questions à tester.">
+<link rel="canonical" href="https://kokolawson.com/articles/rien-ne-change-au-bureau/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Et si rien ne change une fois de retour au bureau ? | Koko Lawson Adoté">
+<meta property="og:description" content="Pourquoi le travail sur soi ne tient pas au bureau : ce n'est pas un manque d'information, c'est une question de pondération.">
+<meta property="og:url" content="https://kokolawson.com/articles/rien-ne-change-au-bureau/">
+<meta property="og:image" content="https://kokolawson.com/photo-koko.jpg">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23002060'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='36' font-weight='bold' fill='%23C6A016' text-anchor='middle'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- Brevo form : police et styles requis, places dans le head -->
+<style>
+  @font-face{font-display:block;font-family:Roboto;src:url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/7529907e9eaf8ebb5220c5f9850e3811.woff2) format("woff2"),url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/25c678feafdc175a70922a116c9be3e7.woff) format("woff")}
+  @font-face{font-display:fallback;font-family:Roboto;font-weight:600;src:url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/6e9caeeafb1f3491be3e32744bc30440.woff2) format("woff2"),url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/71501f0d8d5aa95960f6475d5487d4c2.woff) format("woff")}
+  @font-face{font-display:fallback;font-family:Roboto;font-weight:700;src:url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/3ef7cf158f310cf752d5ad08cd0e7e60.woff2) format("woff2"),url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/ece3a1d82f18b60bcce0211725c476aa.woff) format("woff")}
+  :where(.sib-form-message-panel){display:none}
+  :where(.sib-form-message-panel .sib-notification__icon){width:20px;height:20px}
+  #sib-container input:-ms-input-placeholder{font-family:Helvetica,sans-serif;text-align:left;color:#c0ccda}
+  #sib-container input::placeholder{font-family:Helvetica,sans-serif;text-align:left;color:#c0ccda}
+  #sib-container textarea::placeholder{font-family:Helvetica,sans-serif;text-align:left;color:#c0ccda}
+</style>
+<link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Et si je fais tout ce travail sur moi et que rien ne change une fois de retour au bureau ?",
+  "description": "Pourquoi le travail sur soi ne tient pas au bureau : ce n'est pas un manque d'information, c'est une question de pondération.",
+  "author": {
+    "@type": "Person",
+    "name": "Koko Lawson Adoté",
+    "jobTitle": "Actuaire et coach professionnelle certifiée CTI/ICF",
+    "url": "https://kokolawson.com/"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Koko Lawson Adoté",
+    "url": "https://kokolawson.com/"
+  },
+  "datePublished": "2026-08-19",
+  "dateModified": "2026-08-19",
+  "inLanguage": "fr-FR",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kokolawson.com/articles/rien-ne-change-au-bureau/"
+  },
+  "image": "https://kokolawson.com/photo-koko.jpg"
+}
+</script>
+
+<style>
+  :root{
+    --navy:#002060; --navy-deep:#001640; --gold:#C6A016; --teal:#0F766E;
+    --ink:#1d2433; --muted:#5b6474; --bg:#faf9f6; --card:#ffffff; --line:#e8e4da; --cream:#f2efe8;
+    --serif:'Fraunces',Georgia,serif;
+    --sans:'Hanken Grotesk',system-ui,sans-serif;
+    --mono:'IBM Plex Mono',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.7;font-size:17px}
+  h1,h2,h3{font-family:var(--serif);font-weight:500}
+  em{font-style:italic;color:var(--gold)}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 24px}
+  section{padding:76px 0}
+  /* NAV */
+  nav{position:sticky;top:0;background:rgba(250,249,246,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:50}
+  .navin{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{font-family:var(--serif);font-weight:600;color:var(--navy);font-size:19px;text-decoration:none;cursor:pointer}
+  .logo span{color:var(--gold)}
+  .menu{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+  .menu a{text-decoration:none;color:var(--ink);font-size:15px;font-weight:500;cursor:pointer}
+  .menu a:hover{color:var(--teal)}
+  .menu a[aria-current="page"]{color:var(--teal)}
+  .burger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
+  .burger span{width:24px;height:2.5px;background:var(--navy);border-radius:2px;transition:.25s}
+  .burger.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+  .burger.open span:nth-child(2){opacity:0}
+  .burger.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+  .btn{display:inline-block;background:var(--gold);color:var(--navy-deep);font-weight:700;font-family:var(--sans);padding:13px 26px;border-radius:4px;text-decoration:none;border:none;font-size:15.5px;cursor:pointer;transition:.2s}
+  .btn:hover{filter:brightness(1.07)}
+  .btn.small{padding:9px 18px;font-size:14px}
+  .epi{font-family:var(--mono);font-size:12px;color:var(--teal)}
+  .minihero{background:linear-gradient(165deg,var(--navy),var(--navy-deep));color:#fff;padding:70px 0 58px;position:relative;overflow:hidden}
+  .minihero::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:56px 56px;pointer-events:none}
+  .minihero .wrap{position:relative;z-index:1}
+  .minihero .epi{color:var(--gold)}
+  .minihero h1{font-size:clamp(26px,4vw,40px);line-height:1.24;font-weight:500;max-width:780px;margin-top:14px}
+  .minihero p.meta{color:#9fb0d6;font-family:var(--mono);font-size:12px;margin-top:22px;letter-spacing:.05em}
+  /* ARTICLE */
+  .article{max-width:720px;margin:0 auto;padding:0 24px}
+  .article p{margin-bottom:26px;font-size:17.5px;text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+  .article .qbloc p{text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+  .article h2{font-family:var(--serif);font-size:clamp(23px,3.2vw,30px);color:var(--navy);line-height:1.28;margin:52px 0 22px;font-weight:500}
+  .article strong{color:var(--navy);font-weight:700}
+  .article .pull{font-family:var(--serif);font-style:italic;font-size:23px;line-height:1.5;color:var(--navy);border-left:3px solid var(--gold);padding-left:24px;margin:36px 0;text-align:left}
+  .article .standalone{font-family:var(--serif);font-size:19px;color:var(--teal);font-style:italic;text-align:left}
+  .article .qbloc{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:6px;padding:24px 26px;margin-bottom:22px}
+  .article .qbloc p{margin-bottom:0;font-size:17px}
+  .article .qbloc strong{display:block;font-family:var(--serif);font-size:19px;color:var(--navy);font-weight:500;margin-bottom:10px}
+  .article .sign{font-family:var(--mono);font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:22px;margin-top:52px;line-height:1.8}
+  .article a{color:var(--teal)}
+  .cta-band{background:var(--navy);color:#fff;text-align:center;padding:64px 24px;border-radius:10px;margin:60px auto;max-width:1012px}
+  .cta-band h2{color:#fff;font-family:var(--serif);font-size:clamp(24px,3.4vw,34px);line-height:1.25;margin-bottom:24px;font-weight:500}
+  .cta-band em{color:var(--gold)}
+  footer.site{background:var(--navy-deep);color:#9fb0d6;padding:48px 0;font-size:14px}
+  footer.site a{color:#c9d2e8}
+  .foot{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  /* NEWSLETTER SECTION */
+  .newsletter-section .inner{max-width:660px}
+  #rester-en-contact:target{animation:flash-highlight 2s ease}
+  @keyframes flash-highlight{
+    0%{background:var(--cream)}
+    100%{background:transparent}
+  }
+  @media(max-width:820px){
+    .navin{height:60px}
+    .logo{font-size:17px;white-space:nowrap}
+    .burger{display:flex}
+    .menu{display:none;position:absolute;top:60px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);box-shadow:0 10px 24px rgba(0,32,96,.08);flex-direction:column;align-items:stretch;gap:0;padding:6px 24px 18px}
+    .menu.open{display:flex}
+    .menu a{padding:13px 0;border-bottom:1px dashed var(--line);font-size:16px}
+    .btn.small{margin-top:12px;text-align:center;border-bottom:none;padding:12px 14px}
+    section{padding:52px 0}
+    .minihero{padding:48px 0 42px}
+    .article p{font-size:17px}
+    .article .pull{font-size:20px;padding-left:18px}
+    .cta-band{padding:44px 20px;margin:40px 16px}
+    .cta-band .btn{display:block;text-align:center}
+  }
+  /* ---- Formulaire Brevo, habille charte ---- */
+  :where(.sib-form-message-panel){display:none}
+  :where(.sib-form-message-panel .sib-notification__icon){width:20px;height:20px}
+  .sib-form{background:transparent!important;padding:0!important;text-align:left!important}
+  .sib-form{background:transparent!important;padding:0!important;text-align:left!important}
+  #sib-container{background:transparent!important;border:none!important;padding:0!important;max-width:560px!important}
+  #sib-container .entry__label{font-family:var(--sans)!important;color:var(--navy)!important;font-size:15px!important}
+  #sib-container .input{font-family:var(--sans)!important;border:1px solid var(--line)!important;border-radius:4px!important;background:#fff!important}
+  #sib-container input::placeholder{font-family:var(--sans);color:#9aa3b2}
+  #sib-container .entry__specification{font-family:var(--mono)!important;font-size:11px!important;color:var(--muted)!important}
+  #sib-container .sib-form-block__button{font-family:var(--sans)!important;font-weight:700!important;font-size:15.5px!important;color:var(--navy-deep)!important;background:var(--gold)!important;border:none!important;border-radius:4px!important;padding:13px 26px!important;cursor:pointer}
+  #sib-container .sib-form-block__button:hover{filter:brightness(1.07)}
+  #sib-container a{color:var(--teal)}
+  #sib-container .entry_mcq .form__label-row{flex-direction:column;align-items:flex-start;gap:10px}
+  #sib-container .entry__choice{padding:4px 0}
+  #sib-container .checkbox__label{display:flex;align-items:center;gap:10px;cursor:pointer}
+  #sib-container .checkbox__label span:last-child{font-family:var(--sans)!important;color:var(--ink)!important;font-size:15.5px!important}
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap navin">
+    <a class="logo" href="/">Koko Lawson <span>Adoté</span></a>
+    <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false" onclick="this.classList.toggle('open');document.querySelector('.menu').classList.toggle('open');this.setAttribute('aria-expanded',this.classList.contains('open'))">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="menu">
+      <a href="/">Accueil</a>
+      <a href="/accompagnement/">L'accompagnement</a>
+      <a href="/articles/" aria-current="page">Articles</a>
+      <a href="/ressources/">Ressources</a>
+      <a href="/temoignages/">Témoignages</a>
+      <a class="btn small" href="/seance-zero/">Séance Zéro · offert</a>
+    </div>
+  </div>
+</nav>
+
+<header class="minihero"><div class="wrap">
+  <span class="epi">ARTICLE · POSTURE ET LÉGITIMITÉ</span>
+  <h1>« Et si je fais tout ce travail sur moi et que <em>rien ne change</em> une fois de retour au bureau ? »</h1>
+  <p class="meta">PAR KOKO LAWSON ADOTÉ · LECTURE 10 MIN</p>
+</div></header>
+
+<section>
+<article class="article">
+
+<p>En séance découverte, cette question ne vient presque jamais en premier. Elle arrive plus tard, à demi-mot, quand la confiance est installée et qu'on peut enfin se dire les vrais besoins. Ce qui me fait penser que chez beaucoup de gens, elle ne se pose jamais à voix haute et reste dans la tête, et c'est précisément elle qui fait qu'on ne réserve pas l'appel découverte.</p>
+
+<p class="standalone">Je la trouve parfaitement légitime.</p>
+
+<p>Tu as peut-être déjà suivi une formation leadership, lu les livres qu'il fallait lire, écouté les podcasts pendant tes trajets, et le lundi suivant tu es retourné·e en réunion et tu n'as rien dit, exactement comme avant. Alors avant de te répondre, je voudrais t'expliquer pourquoi ça a échoué, parce que ce n'est pas une question de volonté.</p>
+
+<h2>Ton problème n'est pas un manque d'information, c'est une question de pondération</h2>
+
+<p>Et tu te demandes sans doute ce que la pondération vient faire dans un article sur le coaching.</p>
+
+<p>Je suis actuaire, et depuis dix-sept ans mon métier consiste à estimer des risques. Il existe dans ma discipline une notion qui décrit très exactement ce qui se joue chez toi, et elle s'appelle la théorie de la crédibilité. Quand tu estimes un risque, tu disposes de deux sources d'information, ta propre expérience observée d'un côté et un a priori extérieur de l'autre, et tout l'art consiste à décider quel poids tu accordes à chacune. Ce poids, c'est le coefficient de crédibilité, et mal le calibrer suffit à produire une tarification complètement fausse alors même que toutes tes données sont exactes.</p>
+
+<p>Maintenant, regarde ce que fait ton cerveau avec ça. Tu as en mémoire un ou deux épisodes anciens, un moment où tu t'es trompé·e devant tout le monde ou la phrase d'un premier manager, et à ces épisodes-là tu accordes une crédibilité de 100 %. En face, tu as quinze ou vingt ans de données récentes qui les contredisent, des promotions, des augmentations, des collègues qui viennent te consulter parce que tu es la référence technique du service. Et à toutes ces données-là, tu accordes une crédibilité de 0 %, en te disant que tu as eu de la chance ou que le dossier était plus facile qu'il n'en avait l'air.</p>
+
+<p>C'est pour cette raison que la plupart des accompagnements échouent, et je pèse mes mots. Ils font tous la même chose, qui est d'ajouter de la donnée : ils te répètent que tu es compétent·e, ils te donnent des protocoles en cinq étapes. Sauf que ton problème n'a jamais été le manque de données, c'est le coefficient que tu appliques à tes compétences, et tant qu'il reste à zéro le modèle ne bougera pas d'un millimètre. Voilà pourquoi tu es rentré·e au bureau le lundi suivant sans que rien n'ait changé : tu avais des techniques, mais tu n'avais pas révisé ta pondération.</p>
+
+<h2>Michael<sup>*</sup> venait chercher des techniques, il est reparti avec une question</h2>
+
+<p>Michael est manager, expert technique, 26 ans d'expérience derrière lui, la référence sur les questions techniques, surnommé le petit Robert de la maison. Quand il est arrivé, il voulait développer sa communication et sa visibilité, et il s'attendait à repartir avec des méthodes et des outils, quelque chose de concret à appliquer. Et en même temps, Michael voulait un changement durable.</p>
+
+<p>Il a donc été surpris quand, au lieu de lui dérouler une méthode, je lui ai demandé ce qu'il voulait vraiment. Sa réponse résume mieux que n'importe quelle théorie ce qui bloque les profils comme le sien, et je la cite telle qu'il me l'a dite :</p>
+
+<p class="pull">« Je veux être plus visible, mais je n'en ai pas envie. »</p>
+
+<p>Arrête-toi une seconde sur cette phrase, parce qu'elle est contradictoire et pourtant parfaitement lucide. Michael n'était ni paresseux ni incohérent, il énonçait un conflit réel entre un objectif qu'il s'était assigné et quelque chose de plus profond en lui qui refusait de suivre. Je lui ai alors expliqué ce que j'ai vérifié des dizaines de fois depuis, à savoir que l'envie précède l'action et que sans elle aucune technique ne tient. Tu peux appliquer un protocole par pure discipline, tu finiras par l'abandonner et tu en concluras que le problème vient de toi.</p>
+
+<p>Je lui ai donc demandé ce qui le bloquait, et sa réponse a tout éclairé : pour lui il fallait être dans le service et surtout pas visible au détriment des autres, parce qu'être visible signifiait prendre la place de quelqu'un d'autre. Voilà le vrai coefficient, et tu remarqueras qu'il ne s'agit pas d'un manque de technique mais d'une croyance qui rendait la visibilité moralement inacceptable à ses propres yeux. Le travail a consisté à lui faire conscientiser une autre issue, celle où sa visibilité serait au service des autres, parce que s'il se tait, son équipe se prive de 26 ans d'expertise et son silence ne sert strictement personne.</p>
+
+<h2>Ce qui se passe entre les séances compte autant que les séances</h2>
+
+<p>Michael est reparti avec une expérimentation à mener en situation réelle, pas un exercice théorique mais un objectif de huit prises de parole, dans ses vraies réunions, avec ses vrais collègues. Il a alors découvert que c'était simple pour lui, et que la difficulté n'avait jamais été dans l'exécution mais entièrement en amont.</p>
+
+<p>C'est pour cette raison que <a href="/accompagnement/">mes parcours</a> s'étalent sur plusieurs mois, de trois à huit selon le format, avec une séance toutes les trois semaines plutôt qu'un stage intensif sur un week-end. Un actuaire ne juge jamais la rentabilité d'un portefeuille sur un mois de sinistres, parce que la volatilité de court terme est trop forte pour que le résultat veuille dire quoi que ce soit. Il faut une durée d'exposition suffisante pour que le signal se dégage du bruit, et ces trois semaines entre deux séances sont le terrain lui-même, celui où la donnée se collecte, face à de vrais décideurs.</p>
+
+<p>Au bout de quatre séances, Michael m'a dit que les résultats dépassaient ses attentes. Il participait beaucoup plus systématiquement en réunion et se préparait davantage dans son rôle de lead. Il a aussi constaté une baisse de sa fatigue mentale parce qu'il communiquait de manière plus efficace et moins ruminée, et ce détail compte peut-être plus que tout le reste. La sur-préparation n'est jamais gratuite, c'est du capital immobilisé contre un risque qui ne se réalise presque jamais, et quand la pondération se corrige, ce capital se libère pour autre chose.</p>
+
+<p>Michael n'est pas un cas isolé, puisque <a href="/temoignages/">la note moyenne de satisfaction</a> sur l'ensemble des personnes que j'accompagne est de 9,8 sur 10. Je te donne ce chiffre pour ce qu'il vaut, une donnée déclarative et non la preuve que ça marchera pour toi, mais c'est une donnée, et tu comprends sans doute maintenant pourquoi je tiens tellement à ce mot.</p>
+
+<h2>Je doute encore aujourd'hui, et c'est précisément ce qui a changé</h2>
+
+<p>Je ne t'écris pas tout ça depuis une position au-dessus, parce qu'en 2022 j'ai échoué à un assessment pour passer cadre supérieure. C'est ça, mon point de départ, ni une vocation ni une révélation mais un échec, et c'est après lui que j'ai commencé à me faire accompagner.</p>
+
+<p>Avant cela, quand j'entrais dans une réunion de plus de six personnes en dehors de mon équipe, je me répétais que je n'allais pas y arriver et que je n'étais pas à ma place. J'étais convaincue que ma parole n'intéressait personne, et ces croyances-là fonctionnaient si bien qu'elles se vérifiaient toutes seules. Le coaching m'a donné des clés de compréhension sur mon propre mode de fonctionnement, puis j'ai travaillé mes croyances limitantes pour les transformer en croyances ressources.</p>
+
+<p>Et un jour, j'ai demandé à ma chef davantage de responsabilités. Dit comme ça, ça peut sembler banal, mais ça ne l'était pas du tout pour moi. Je l'avais préparé, et surtout j'avais posé une intention sur l'énergie avec laquelle je voulais entrer dans cet échange, pas seulement sur les mots. Elle a compris et a décidé de me laisser plus d'espace, ce qui s'est traduit par un dossier stratégique confié et par le lead sur les sujets phares de l'équipe. Je serais bien incapable de te répéter mes mots exacts ce jour-là, ce qui devrait te dire quelque chose sur ce qui compte vraiment dans ce genre de moment.</p>
+
+<p>Est-ce que je ne doute plus, depuis ? Absolument pas, je doute encore et régulièrement. Ce qui a changé, c'est que je sais reconnaître le moment où mon cerveau surenchérit le danger, où il attribue à un risque une probabilité qui n'a rien à voir avec la réalité observée. À cet instant précis, je m'offre la possibilité d'autres issues. Je continue d'ailleurs à me faire coacher, non pas pour éliminer le doute mais pour entretenir cette légitimité intérieure.</p>
+
+<h2>Ce que je ne te promettrai jamais</h2>
+
+<p>Je préfère te le dire franchement, quitte à ce que ça me coûte des clients : si tu cherches des techniques extérieures et des méthodes clés en main, mon accompagnement n'est pas pour toi, et je préfère te le dire avant plutôt qu'après.</p>
+
+<p>Je ne te promettrai donc pas que tu ne douteras plus jamais de toi, ni que tout ce que tu entreprendras réussira, ni que tu n'échoueras plus, parce que ce n'est pas vrai. Après cinq ans de développement professionnel et personnel, je continue de douter, d'avoir des problèmes et d'échouer, et je ne vois pas au nom de quoi je te vendrais autre chose.</p>
+
+<p>Ce que je te promets en revanche, c'est que tu connaîtras ta valeur, tes forces et tes qualités uniques, et que tu connaîtras aussi tes valeurs, ce qui te met réellement en mouvement. Tu comprendras tes émotions et tes moments de doute au lieu de les subir, tu sauras identifier l'impact des dynamiques relationnelles sur toi et poser tes limites, et tu oseras davantage pour incarner qui tu es vraiment. C'est ce que j'ai vécu moi-même, et c'est la seule chose que je puisse honnêtement te garantir.</p>
+
+<p class="pull">Le but de mon accompagnement n'a jamais été de faire disparaître le doute ou le risque, mais de changer ton rapport avec eux pour qu'ils cessent de saboter tes décisions, et que tu puisses enfin occuper ta place sans attendre d'être parfait·e.</p>
+
+<h2>Ce que tu peux tester dès cette semaine, sans moi et sans rien acheter</h2>
+
+<p>Tu ne vas pas me croire sur parole, et c'est sain, c'est même ce qui fait de toi quelqu'un de rigoureux. Alors teste par toi-même. Voici les questions que je te poserais si tu étais en face de moi, et je te suggère de prendre dix minutes avant ta prochaine réunion, avec un carnet, sachant que personne d'autre que toi ne lira tes réponses.</p>
+
+<div class="qbloc"><p><strong>Qu'est-ce que je veux vraiment dans cette réunion ?</strong>La réponse n'est pas ce que tu devrais vouloir, c'est ce que tu veux réellement. Et si elle contient un « mais », comme dans « je veux intervenir, mais », surtout ne l'efface pas, parce que c'est exactement là que Michael a commencé.</p></div>
+
+<div class="qbloc"><p><strong>À quoi je dis oui quand je me tais ?</strong>Je ne te demande pas pourquoi tu n'oses pas, mais ce que ton silence protège ou sert, sachant qu'il sert toujours à quelque chose. Chez Michael, se taire c'était rester au service des autres, autrement dit une valeur et non un défaut, et il s'agit maintenant de trouver la tienne.</p></div>
+
+<div class="qbloc"><p><strong>Et si ma prise de parole servait quelqu'un d'autre que moi ?</strong>C'est la question qui a tout fait bouger pour Michael, et elle se contente d'ouvrir une autre issue possible. Si tu te tais, quel collègue, quel projet ou quelle décision se prive de ce que tu sais ?</p></div>
+
+<div class="qbloc"><p><strong>Avec quelle énergie je veux entrer dans cette pièce ?</strong>Chaleureuse, ferme, posée, curieuse : choisis-en une, consciemment. Ce n'est pas une technique de préparation mais un choix sur qui tu décides d'être, et c'est ce que j'ai fait avant de demander plus de responsabilités à ma chef.</p></div>
+
+<p class="standalone" style="margin-top:34px">Puis vas-y, et fais-le pour de vrai.</p>
+
+<p>Enfin, une fois que c'est passé, une seule question compte : <strong>qu'est-ce que j'ai appris sur moi ?</strong> Tu remarqueras que je ne te demande pas si ça a marché, et c'est volontaire. Tu vas être tenté·e de juger le résultat, de te demander si ton chef a réagi, et c'est précisément le réflexe qui te fait disqualifier tes propres données depuis quinze ans. Tu sauras que ça a marché parce que tu l'as fait. C'est ta première observation, alors note-la et recommence la fois suivante.</p>
+
+<p>Si tu veux savoir ce qui se passe quand tu accumules ces observations pendant plusieurs mois, avec quelqu'un en face qui t'aide à voir ce que tu ne vois pas encore, c'est ce que font mes parcours <a href="/accompagnement/">Focus, Maîtrise et Prends ta place</a>, selon que tu cherches à dénouer une situation précise, à déloger un mécanisme qui se répète ou à transformer ta posture en profondeur. Tout commence par une <a href="/seance-zero/">Séance Zéro</a> de 45 minutes, offerte, dont tu repars avec plus de clarté quoi qu'il arrive.</p>
+
+<p class="sign">
+  Koko Lawson Adoté, actuaire et coach professionnelle certifiée CTI/ICF. Je modélise la confiance.<br>
+  <sup>*</sup> Michael est un nom d'emprunt, pour la confidentialité de mes clients.
+</p>
+
+</article>
+</section>
+
+<section id="rester-en-contact"><div class="wrap inner">
+  <span class="kicker">Rester en contact</span>
+  <h2>Le live, et mes <em>articles</em></h2>
+  <p class="lead">Une fois par mois, un live d'une heure où tu me poses toutes tes questions, sans filtre. Et entre deux, mes nouveaux articles, dès qu'ils paraissent. Choisis ce qui t'intéresse, ou les deux.</p>
+  <!-- Begin Brevo Form (habillé charte via le CSS en tête de fichier) -->
+  <div class="sib-form" style="margin-top:20px">
+    <div id="sib-form-container" class="sib-form-container">
+      <div id="error-message" class="sib-form-message-panel" style="font-size:15px;text-align:left;color:#661d1d;background-color:#ffeded;border-color:#ff4949;border-radius:4px;max-width:560px;margin-bottom:12px">
+        <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+          <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon"><path d="M256 40c118.621 0 216 96.075 216 216 0 119.291-96.61 216-216 216-119.244 0-216-96.562-216-216 0-119.203 96.602-216 216-216m0-32C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm-11.49 120h22.979c6.823 0 12.274 5.682 11.99 12.5l-7 168c-.268 6.428-5.556 11.5-11.99 11.5h-8.979c-6.433 0-11.722-5.073-11.99-11.5l-7-168c-.283-6.818 5.167-12.5 11.99-12.5zM256 340c-15.464 0-28 12.536-28 28s12.536 28 28 28 28-12.536 28-28-12.536-28-28-28z"/></svg>
+          <span class="sib-form-message-panel__inner-text">Nous n&#39;avons pas pu confirmer votre inscription.</span>
+        </div>
+      </div>
+      <div id="success-message" class="sib-form-message-panel" style="font-size:15px;text-align:left;color:#085229;background-color:#e7faf0;border-color:#13ce66;border-radius:4px;max-width:560px;margin-bottom:12px">
+        <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+          <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon"><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 464c-118.664 0-216-96.055-216-216 0-118.663 96.055-216 216-216 118.664 0 216 96.055 216 216 0 118.663-96.055 216-216 216zm141.63-274.961L217.15 376.071c-4.705 4.667-12.303 4.637-16.97-.068l-85.878-86.572c-4.667-4.705-4.637-12.303.068-16.97l8.52-8.451c4.705-4.667 12.303-4.637 16.97.068l68.976 69.533 163.441-162.13c4.705-4.667 12.303-4.637 16.97.068l8.451 8.52c4.668 4.705 4.637 12.303-.068 16.97z"/></svg>
+          <span class="sib-form-message-panel__inner-text">Bienvenue ! Vérifie ta boîte mail pour confirmer ton inscription. 🙏🏾</span>
+        </div>
+      </div>
+      <div id="sib-container" class="sib-container--large sib-container--vertical">
+        <form id="sib-form" method="POST" action="https://fcbd5056.sibforms.com/serve/MUIFALop1G5b_twKPdtunCKFnWIY0jEVw-j2q8FbjJhi8-QoV1ICXFK9MVQPEThO3ojbCegdjA07CYQewt6f9_bRKDPW7S1oslKvJ9Y7955NeNjp0znuKCWaUzQ7t_arELpw8ThcLglIQQ1MONUMuObUSUWJyTOMiV74-GxRVLs-gt53GyWDnPV-IJHtJwwbeRjOtceWc_qvj-HQAw==" data-type="subscription">
+          <div style="padding:8px 0">
+            <div class="sib-input sib-form-block">
+              <div class="form__entry entry_block">
+                <div class="form__label-row">
+                  <label class="entry__label" for="PRENOM" data-required="*">Ton prénom</label>
+                  <div class="entry__field">
+                    <input class="input" maxlength="200" type="text" id="PRENOM" name="PRENOM" autocomplete="off" placeholder="Prénom" data-required="true" required />
+                  </div>
+                </div>
+                <label class="entry__error entry__error--primary" style="font-size:15px;text-align:left;color:#661d1d;background-color:#ffeded;border-color:#ff4949;border-radius:4px"></label>
+              </div>
+            </div>
+          </div>
+          <div style="padding:8px 0">
+            <div class="sib-input sib-form-block">
+              <div class="form__entry entry_block">
+                <div class="form__label-row">
+                  <label class="entry__label" for="EMAIL" data-required="*">Ton adresse email</label>
+                  <div class="entry__field">
+                    <input class="input" type="text" id="EMAIL" name="EMAIL" autocomplete="off" value="" placeholder="ton@email.com" data-required="true" required />
+                  </div>
+                </div>
+                <label class="entry__error entry__error--primary" style="font-size:15px;text-align:left;color:#661d1d;background-color:#ffeded;border-color:#ff4949;border-radius:4px"></label>
+              </div>
+            </div>
+          </div>
+          <div style="padding:8px 0">
+            <div class="sib-checkbox-group sib-form-block" data-required="true">
+              <div class="form__entry entry_mcq">
+                <div class="form__label-row">
+                  <label class="entry__label" data-required="*">Choisis ce que tu veux recevoir</label>
+                  <div>
+                    <div class="entry__choice">
+                      <label class="checkbox__label">
+                        <input type="checkbox" class="input_replaced" name="lists_26[]" data-value="Lives de Koko" value="3" data-required="true" />
+                        <span class="checkbox checkbox_tick_positive"></span><span>Le live mensuel</span>
+                      </label>
+                    </div>
+                    <div class="entry__choice">
+                      <label class="checkbox__label">
+                        <input type="checkbox" class="input_replaced" name="lists_26[]" data-value="Newsletter de Koko avec les nouveaux articles" value="4" data-required="true" />
+                        <span class="checkbox checkbox_tick_positive"></span><span>Les nouveaux articles</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <label class="entry__error entry__error--primary" style="font-size:15px;text-align:left;color:#661d1d;background-color:#ffeded;border-color:#ff4949;border-radius:4px"></label>
+              </div>
+            </div>
+          </div>
+          <div style="padding:8px 0">
+            <div class="sib-form-block" style="text-align:left">
+              <button class="sib-form-block__button sib-form-block__button-with-loader" form="sib-form" type="submit">
+                <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512"><path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z"/></svg>
+                Je m&#39;inscris 👉🏾
+              </button>
+            </div>
+          </div>
+          <input type="text" name="email_address_check" value="" class="input--hidden">
+          <input type="hidden" name="locale" value="fr">
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- End Brevo Form -->
+  <p style="font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-top:14px">100 % GRATUIT · DÉSABONNEMENT EN UN CLIC · PENSE À VÉRIFIER TES SPAMS</p>
+</div></section>
+
+<div class="cta-band">
+  <h2>Tu viens de lire pourquoi ça n'avait pas tenu.<br><em>La prochaine étape t'appartient.</em></h2>
+  <a class="btn" href="/seance-zero/">Réserver ma Séance Zéro · 45 min, offert</a>
+</div>
+
+<footer class="site">
+  <div class="wrap foot">
+    <div>
+      <p style="font-family:var(--serif);color:#fff;font-size:17px">Koko Lawson Adoté</p>
+      <p style="font-family:var(--mono);font-size:12px;color:var(--gold);margin-top:4px">JE MODÉLISE LA CONFIANCE_</p>
+      <p style="margin-top:8px">Coach co-active · Actuaire · Méthode CInA®</p>
+    </div>
+    <div>
+      <p><a href="https://www.linkedin.com/in/koko-lawson-adote/">LinkedIn</a> · <a href="https://www.youtube.com/@KokoLawson-A">YouTube</a> · <a href="mailto:contact@kokolawson.com">contact@kokolawson.com</a></p>
+      <p style="margin-top:8px;font-size:12.5px">Auto-entrepreneur · Activité non réglementée · TVA non applicable, art. 293B du CGI</p>
+      <p style="margin-top:6px;font-size:12.5px"><a href="/mentions-legales/#mentions">Mentions légales</a> · <a href="/mentions-legales/#confidentialite">Confidentialité</a> · <a href="/mentions-legales/#cookies">Politique cookies</a> · <a href="/mentions-legales/#gerer-cookies">Gérer les cookies</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- Begin Brevo Form script -->
+<script>
+  window.REQUIRED_CODE_ERROR_MESSAGE = 'Veuillez choisir un code pays';
+  window.LOCALE = 'fr';
+  window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "Les informations que vous avez fournies ne sont pas valides. Veuillez vérifier le format du champ et réessayer.";
+  window.REQUIRED_ERROR_MESSAGE = "Ce champ est obligatoire. ";
+  window.GENERIC_INVALID_MESSAGE = "Les informations que vous avez fournies ne sont pas valides. Veuillez vérifier le format du champ et réessayer.";
+  window.INVALID_NUMBER = "Les informations que vous avez fournies ne sont pas valides. Veuillez vérifier le format du champ et réessayer.";
+  window.INVALID_DATE = "Veuillez saisir une date valide";
+  window.REQUIRED_MULTISELECT_MESSAGE = 'Veuillez choisir au moins une option';
+  window.translation = {
+    common: {
+      selectedList: '{quantity} liste sélectionnée',
+      selectedLists: '{quantity} listes sélectionnées',
+      selectedOption: '{quantity} sélectionné',
+      selectedOptions: '{quantity} sélectionnés',
+    }
+  };
+  var AUTOHIDE = Boolean(0);
+</script>
+<script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
+<!-- End Brevo Form script -->
+
+</body>
+</html>
