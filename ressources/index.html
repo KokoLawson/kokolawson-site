@@ -165,6 +165,10 @@
   #sib-container .sib-form-block__button{font-family:var(--sans)!important;font-weight:700!important;font-size:15.5px!important;color:var(--navy-deep)!important;background:var(--gold)!important;border:none!important;border-radius:4px!important;padding:13px 26px!important;cursor:pointer}
   #sib-container .sib-form-block__button:hover{filter:brightness(1.07)}
   #sib-container a{color:var(--teal)}
+  #sib-container .entry_mcq .form__label-row{flex-direction:column;align-items:flex-start;gap:10px}
+  #sib-container .entry__choice{padding:4px 0}
+  #sib-container .checkbox__label{display:flex;align-items:center;gap:10px;cursor:pointer}
+  #sib-container .checkbox__label span:last-child{font-family:var(--sans)!important;color:var(--ink)!important;font-size:15.5px!important}
 </style>
 
 </head>
@@ -178,9 +182,10 @@
     <div class="menu">
       <a href="/">Accueil</a>
       <a href="/accompagnement/">L'accompagnement</a>
+      <a href="/articles/">Articles</a>
       <a href="/ressources/">Ressources</a>
       <a href="/temoignages/">Témoignages</a>
-      <a class="btn small" href="/seance-decouverte/">Séance Zéro · offert</a>
+      <a class="btn small" href="/seance-zero/">Séance Zéro · offert</a>
     </div>
   </div>
 </nav>
@@ -237,9 +242,9 @@
   </div></section>
 
   <section><div class="wrap">
-    <span class="kicker">Les lives</span>
-    <h2>Un live gratuit <em>chaque mois</em></h2>
-    <p class="lead">Une heure en direct, sans filtre. Inscris-toi pour recevoir les dates, le lien, et un levier concret par email entre deux lives.</p>
+    <span class="kicker">Rester en contact</span>
+    <h2>Le live, et mes <em>articles</em></h2>
+    <p class="lead">Une fois par mois, un live d'une heure où tu me poses toutes tes questions, sans filtre. Et entre deux, ma newsletter avec mes nouveaux articles, dès qu'ils paraissent. Choisis ce qui t'intéresse, ou les deux.</p>
     <!-- Begin Brevo Form (habillé charte via le CSS en tête de fichier) -->
     <div class="sib-form" style="margin-top:20px">
       <div id="sib-form-container" class="sib-form-container">
@@ -284,10 +289,34 @@
               </div>
             </div>
             <div style="padding:8px 0">
+              <div class="sib-checkbox-group sib-form-block" data-required="true">
+                <div class="form__entry entry_mcq">
+                  <div class="form__label-row">
+                    <label class="entry__label" data-required="*">Choisis ce que tu veux recevoir</label>
+                    <div>
+                      <div class="entry__choice">
+                        <label class="checkbox__label">
+                          <input type="checkbox" class="input_replaced" name="lists_26[]" data-value="Lives de Koko" value="3" data-required="true" />
+                          <span class="checkbox checkbox_tick_positive"></span><span>Le live mensuel</span>
+                        </label>
+                      </div>
+                      <div class="entry__choice">
+                        <label class="checkbox__label">
+                          <input type="checkbox" class="input_replaced" name="lists_26[]" data-value="Newsletter de Koko avec les nouveaux articles" value="4" data-required="true" />
+                          <span class="checkbox checkbox_tick_positive"></span><span>Newsletter de Koko avec les nouveaux articles</span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <label class="entry__error entry__error--primary" style="font-size:15px;text-align:left;color:#661d1d;background-color:#ffeded;border-color:#ff4949;border-radius:4px"></label>
+                </div>
+              </div>
+            </div>
+            <div style="padding:8px 0">
               <div class="sib-form-block" style="text-align:left">
                 <button class="sib-form-block__button sib-form-block__button-with-loader" form="sib-form" type="submit">
                   <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512"><path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z"/></svg>
-                  Je m&#39;inscris aux lives 👉🏾
+                  Je m&#39;inscris 👉🏾
                 </button>
               </div>
             </div>
@@ -337,7 +366,7 @@ function score(){
   if(n<=3){t="<b>Profil : Vigie ponctuelle ("+n+"/12).</b> Ton invisibilité est situationnelle, elle se déclenche dans des contextes précis. C'est le profil le plus rapide à faire bouger.";}
   else if(n<=7){t="<b>Profil : Expert·e en retrait ("+n+"/12).</b> Le mécanisme est installé : tu compenses par l'excellence ce que tu n'oses pas encore occuper en présence. C'est exactement la zone de travail de la Séance Zéro.";}
   else{t="<b>Profil : Invisibilité structurelle ("+n+"/12).</b> Tu fonctionnes probablement en sur-adaptation permanente, un coût en énergie, en euros et en trajectoire. Ce n'est pas un trait de personnalité : c'est une posture apprise, donc désapprenable.";}
-  r.innerHTML=t+"<p style='margin-top:14px'><a class='btn small' href='/seance-decouverte/'>Réserver ma Séance Zéro · offert</a></p>";
+  r.innerHTML=t+"<p style='margin-top:14px'><a class='btn small' href='/seance-zero/'>Réserver ma Séance Zéro · offert</a></p>";
   r.style.display='block';
 }
 </script>
