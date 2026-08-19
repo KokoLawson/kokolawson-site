@@ -185,7 +185,7 @@
       <a href="/articles/">Articles</a>
       <a href="/ressources/">Ressources</a>
       <a href="/temoignages/">Témoignages</a>
-      <a class="btn small" href="/seance-zero/">Séance Zéro · offert</a>
+      <a class="btn small" href="/seance-decouverte/">Séance Découverte · offert</a>
     </div>
   </div>
 </nav>
@@ -364,9 +364,9 @@ function score(){
   const r=document.getElementById('quizresult');
   let t;
   if(n<=3){t="<b>Profil : Vigie ponctuelle ("+n+"/12).</b> Ton invisibilité est situationnelle, elle se déclenche dans des contextes précis. C'est le profil le plus rapide à faire bouger.";}
-  else if(n<=7){t="<b>Profil : Expert·e en retrait ("+n+"/12).</b> Le mécanisme est installé : tu compenses par l'excellence ce que tu n'oses pas encore occuper en présence. C'est exactement la zone de travail de la Séance Zéro.";}
+  else if(n<=7){t="<b>Profil : Expert·e en retrait ("+n+"/12).</b> Le mécanisme est installé : tu compenses par l'excellence ce que tu n'oses pas encore occuper en présence. C'est exactement la zone de travail de la Séance Découverte.";}
   else{t="<b>Profil : Invisibilité structurelle ("+n+"/12).</b> Tu fonctionnes probablement en sur-adaptation permanente, un coût en énergie, en euros et en trajectoire. Ce n'est pas un trait de personnalité : c'est une posture apprise, donc désapprenable.";}
-  r.innerHTML=t+"<p style='margin-top:14px'><a class='btn small' href='/seance-zero/'>Réserver ma Séance Zéro · offert</a></p>";
+  r.innerHTML=t+"<p style='margin-top:14px'><a class='btn small' href='/seance-decouverte/'>Réserver ma Séance Découverte · offert</a></p>";
   r.style.display='block';
 }
 </script>
