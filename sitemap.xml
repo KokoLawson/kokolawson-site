@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://kokolawson.com/</loc></url>
-  <url><loc>https://kokolawson.com/porte-visibilite/</loc></url>
-  <url><loc>https://kokolawson.com/porte-sens/</loc></url>
-  <url><loc>https://kokolawson.com/porte-tournant/</loc></url>
-  <url><loc>https://kokolawson.com/accompagnement/</loc></url>
-  <url><loc>https://kokolawson.com/seance-zero/</loc></url>
-  <url><loc>https://kokolawson.com/ressources/</loc></url>
-  <url><loc>https://kokolawson.com/temoignages/</loc></url>
-  <url><loc>https://kokolawson.com/mentions-legales/</loc></url>
+  <url><loc>https://kokolawson.com/</loc><lastmod>2026-08-29</lastmod></url>
+  <url><loc>https://kokolawson.com/quiz/</loc><lastmod>2026-08-29</lastmod></url>
+  <url><loc>https://kokolawson.com/porte-visibilite/</loc><lastmod>2026-08-29</lastmod></url>
+  <url><loc>https://kokolawson.com/porte-tournant/</loc><lastmod>2026-08-29</lastmod></url>
+  <url><loc>https://kokolawson.com/porte-sens/</loc><lastmod>2026-08-29</lastmod></url>
+  <url><loc>https://kokolawson.com/accompagnement/</loc><lastmod>2026-08-29</lastmod></url>
+  <url><loc>https://kokolawson.com/seance-decouverte/</loc><lastmod>2026-08-29</lastmod></url>
+  <url><loc>https://kokolawson.com/ressources/</loc><lastmod>2026-08-29</lastmod></url>
+  <url><loc>https://kokolawson.com/articles/</loc><lastmod>2026-08-29</lastmod></url>
+  <url><loc>https://kokolawson.com/articles/rien-ne-change-au-bureau/</loc><lastmod>2026-08-29</lastmod></url>
+  <url><loc>https://kokolawson.com/temoignages/</loc><lastmod>2026-08-29</lastmod></url>
+  <url><loc>https://kokolawson.com/mentions-legales/</loc><lastmod>2026-08-29</lastmod></url>
 </urlset>

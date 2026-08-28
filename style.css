@@ -4,7 +4,7 @@
    couleur, une police ou un espacement : éditer ici seulement.
    ============================================================ */
   :root{
-    --navy:#002060; --navy-deep:#001640; --gold:#C6A016; --teal:#0F766E;
+    --navy:#002060; --navy-deep:#001640; --gold:#C6A016; --gold-dark:#8A6D0B; --teal:#0F766E;
     --ink:#1d2433; --muted:#5b6474; --bg:#faf9f6; --card:#ffffff; --line:#e8e4da; --cream:#f2efe8;
     --serif:'Fraunces',Georgia,serif;
     --sans:'Hanken Grotesk',system-ui,sans-serif;
@@ -14,18 +14,18 @@
   html{scroll-behavior:smooth}
   body{font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.7;font-size:17px}
   h1,h2,h3{font-family:var(--serif);font-weight:500}
-  em{font-style:italic;color:var(--gold)}
+  em{font-style:italic;color:var(--gold-dark)}
   .wrap{max-width:1060px;margin:0 auto;padding:0 24px}
   section{padding:76px 0}
   .kicker{display:inline-block;font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:16px}
-  .kicker::before{content:"- ";color:var(--gold)}
+  .kicker::before{content:"- ";color:var(--gold-dark)}
   h2{font-size:clamp(27px,3.8vw,38px);color:var(--navy);line-height:1.22;margin-bottom:18px}
   .lead{font-size:18.5px;color:var(--muted);max-width:660px}
   /* NAV */
   nav{position:sticky;top:0;background:rgba(250,249,246,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:50}
   .navin{display:flex;align-items:center;justify-content:space-between;height:68px}
   .logo{font-family:var(--serif);font-weight:600;color:var(--navy);font-size:19px;text-decoration:none;cursor:pointer}
-  .logo span{color:var(--gold)}
+  .logo span{color:var(--gold-dark)}
   .menu{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
   .menu a{text-decoration:none;color:var(--ink);font-size:15px;font-weight:500;cursor:pointer}
   .menu a:hover{color:var(--teal)}
@@ -57,7 +57,7 @@
   .portes{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;margin-top:40px}
   .porte{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:34px 30px;cursor:pointer;transition:.25s;position:relative}
   .porte:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:0 14px 34px rgba(0,32,96,.08)}
-  .porte .idx{font-family:var(--mono);font-size:11px;color:var(--gold);letter-spacing:.1em}
+  .porte .idx{font-family:var(--mono);font-size:11px;color:var(--gold-dark);letter-spacing:.1em}
   .porte h3{color:var(--navy);font-size:21px;margin:12px 0 10px;font-weight:600}
   .porte p{font-size:15px;color:var(--muted)}
   .porte .go{font-family:var(--mono);font-size:12px;color:var(--teal);margin-top:16px;display:block}
@@ -79,7 +79,7 @@
   .card p{font-size:15.5px;color:var(--muted)}
   /* QUOTES */
   .quote{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:28px;font-size:15.5px}
-  .quote .mark{font-family:var(--serif);font-size:42px;color:var(--gold);line-height:.5}
+  .quote .mark{font-family:var(--serif);font-size:42px;color:var(--gold-dark);line-height:.5}
   .quote footer{margin-top:14px;font-weight:700;color:var(--navy);font-size:14px}
   .quote footer span{display:block;font-weight:400;color:var(--muted);font-family:var(--mono);font-size:11.5px}
   /* TIERS */
@@ -93,12 +93,12 @@
   .price small{font-size:12.5px;color:var(--muted);font-family:var(--mono);font-weight:400}
   .tier ul{list-style:none;margin:18px 0 24px;flex:1}
   .tier li{padding:7px 0 7px 24px;position:relative;font-size:15px}
-  .tier li::before{content:"-";position:absolute;left:0;color:var(--gold);font-weight:700}
+  .tier li::before{content:"-";position:absolute;left:0;color:var(--gold-dark);font-weight:700}
   .tier li.atelier::before{content:"+";color:var(--teal)}
   /* STEPS */
   .steps{counter-reset:s;margin-top:30px}
   .step{display:grid;grid-template-columns:64px 1fr;gap:18px;padding:22px 0;border-bottom:1px solid var(--line)}
-  .step::before{counter-increment:s;content:"0" counter(s);font-family:var(--mono);font-size:22px;color:var(--gold)}
+  .step::before{counter-increment:s;content:"0" counter(s);font-family:var(--mono);font-size:22px;color:var(--gold-dark)}
   .step h3{color:var(--navy);font-size:18px;margin-bottom:4px;font-weight:600}
   .step p{color:var(--muted);font-size:15.5px}
   /* QUIZ */
@@ -150,3 +150,28 @@
   #sib-container .sib-form-block__button{font-family:var(--sans)!important;font-weight:700!important;font-size:15.5px!important;color:var(--navy-deep)!important;background:var(--gold)!important;border:none!important;border-radius:4px!important;padding:13px 26px!important;cursor:pointer}
   #sib-container .sib-form-block__button:hover{filter:brightness(1.07)}
   #sib-container a{color:var(--teal)}
+
+  /* ---- Contraste et accessibilité (phase 2) --------------------
+     --gold reste le doré de marque : il est lisible sur le navy.
+     --gold-dark prend le relais sur les fonds clairs, où le doré
+     d'origine tombait à 2,2:1 pour un minimum requis de 4,5:1.
+     Les zones sombres ci-dessous reprennent donc le doré clair. */
+  .cta-band em, footer.site em{color:var(--gold)}
+
+  /* Indicateur de focus : il n'y en avait aucun, la navigation au
+     clavier se faisait à l'aveugle. :focus-visible n'affiche l'anneau
+     qu'au clavier, jamais au clic souris. */
+  :focus-visible{outline:2px solid var(--gold-dark);outline-offset:3px;border-radius:2px}
+  .hero :focus-visible, .cta-band :focus-visible, footer.site :focus-visible{outline-color:var(--gold)}
+
+  /* Respect du réglage système « réduire les animations ». */
+  @media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  }
+
+  /* ---- Recentrage éditorial (phase 3) --------------------------
+     Les cartes du mécanisme sont désormais de vrais liens : Google
+     les suit, le clavier les active, le clic-milieu fonctionne. */
+  a.porte{display:block;text-decoration:none;color:inherit}
+  .aside{margin-top:26px;font-size:15.5px;color:var(--muted)}
+  .aside a{color:var(--teal);font-weight:700}
