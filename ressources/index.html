@@ -241,7 +241,7 @@
     </div>
   </div></section>
 
-  <section><div class="wrap">
+  <section id="newsletter"><div class="wrap">
     <span class="kicker">Rester en contact</span>
     <h2>Le live, et mes <em>articles</em></h2>
     <p class="lead">Une fois par mois, un live d'une heure où tu me poses toutes tes questions, sans filtre. Et entre deux, ma newsletter avec mes nouveaux articles, dès qu'ils paraissent. Choisis ce qui t'intéresse, ou les deux.</p>
@@ -366,7 +366,11 @@ function score(){
   if(n<=3){t="<b>Profil : Vigie ponctuelle ("+n+"/12).</b> Ton invisibilité est situationnelle, elle se déclenche dans des contextes précis. C'est le profil le plus rapide à faire bouger.";}
   else if(n<=7){t="<b>Profil : Expert·e en retrait ("+n+"/12).</b> Le mécanisme est installé : tu compenses par l'excellence ce que tu n'oses pas encore occuper en présence. C'est exactement la zone de travail de la Séance Découverte.";}
   else{t="<b>Profil : Invisibilité structurelle ("+n+"/12).</b> Tu fonctionnes probablement en sur-adaptation permanente, un coût en énergie, en euros et en trajectoire. Ce n'est pas un trait de personnalité : c'est une posture apprise, donc désapprenable.";}
-  r.innerHTML=t+"<p style='margin-top:14px'><a class='btn small' href='/seance-decouverte/'>Réserver ma Séance Découverte · offert</a></p>";
+  r.innerHTML=t
+    +"<p style='margin-top:16px;display:flex;gap:10px;flex-wrap:wrap'>"
+    +"<a class='btn small' href='#newsletter'>Recevoir mes articles et l'invitation au live</a>"
+    +"<a class='btn small ghost' href='/seance-decouverte/'>Réserver ma Séance Découverte · offert</a>"
+    +"</p>";
   r.style.display='block';
 }
 </script>
