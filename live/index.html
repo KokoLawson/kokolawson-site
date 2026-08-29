@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ressources gratuites : épisodes, diagnostic et live mensuel</title>
-<meta name="description" content="Un épisode YouTube chaque samedi 8h, un live gratuit chaque mois, et le quiz « Ton profil d'invisibilité » en 12 situations. Se connaître, reconnaître sa valeur, prendre sa place.">
-<link rel="canonical" href="https://kokolawson.com/ressources/">
+<title>Le live mensuel : une heure de questions-réponses, offert</title>
+<meta name="description" content="Chaque 3e jeudi du mois, de 20h à 21h sur Google Meet : une heure en direct pour lever tes blocages, assumer ta valeur et prendre ta place. Live gratuit, replay pour les inscrits, et tu peux venir sans parler ni allumer ta caméra.">
+<link rel="canonical" href="https://kokolawson.com/live/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Ressources gratuites : épisodes YouTube, quiz d'auto-diagnostic, lives mensuels | Koko Lawson Adoté">
-<meta property="og:description" content="Un épisode YouTube chaque samedi 8h, un live gratuit chaque mois, et le quiz « Ton profil d'invisibilité » en 12 situations. Se connaître, reconnaître sa valeur, prendre sa place.">
-<meta property="og:url" content="https://kokolawson.com/ressources/">
+<meta property="og:title" content="Le live mensuel : une heure de questions-réponses, offert">
+<meta property="og:description" content="Chaque 3e jeudi du mois, de 20h à 21h. Tes questions, mes réponses, sans tabou. Tu peux venir sans parler ni allumer ta caméra.">
+<meta property="og:url" content="https://kokolawson.com/live/">
 <meta property="og:image" content="https://kokolawson.com/photo-koko.jpg">
 <meta property="og:locale" content="fr_FR">
 <meta name="twitter:card" content="summary_large_image">
@@ -18,30 +18,37 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 <link rel="stylesheet" href="/style.css">
-<style>
-  #sib-container .entry_mcq .form__label-row{flex-direction:column;align-items:flex-start;gap:10px}
-  #sib-container .entry__choice{padding:4px 0}
-  #sib-container .checkbox__label{display:flex;align-items:center;gap:10px;cursor:pointer}
-  #sib-container .checkbox__label span:last-child{font-family:var(--sans)!important;color:var(--ink)!important;font-size:15.5px!important}
-</style>
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "CollectionPage",
-      "@id": "https://kokolawson.com/ressources/#page",
-      "url": "https://kokolawson.com/ressources/",
-      "name": "Ressources : épisodes, auto-diagnostic et live mensuel",
-      "description": "Les contenus offerts : un épisode YouTube chaque samedi, l'auto-diagnostic d'invisibilité, et le live mensuel de questions-réponses.",
+      "@type": "EventSeries",
+      "@id": "https://kokolawson.com/live/#live",
+      "name": "Le live de Koko Lawson",
+      "description": "Une heure en direct, chaque 3e jeudi du mois : questions-réponses sans tabou autour de trois défis, lever ses blocages, assumer sa valeur, prendre sa place. On peut y assister sans parler ni allumer sa caméra, et le replay est envoyé aux inscrits.",
+      "url": "https://kokolawson.com/live/",
       "inLanguage": "fr-FR",
-      "isPartOf": { "@id": "https://kokolawson.com/#website" },
-      "author": { "@id": "https://kokolawson.com/#koko" }
+      "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "isAccessibleForFree": true,
+      "organizer": { "@id": "https://kokolawson.com/#koko" },
+      "performer": { "@id": "https://kokolawson.com/#koko" },
+      "location": { "@type": "VirtualLocation", "url": "https://meet.google.com/" },
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "url": "https://kokolawson.com/live/" },
+      "eventSchedule": {
+        "@type": "Schedule",
+        "repeatFrequency": "P1M",
+        "byDay": "https://schema.org/Thursday",
+        "byMonthWeek": 3,
+        "startTime": "20:00",
+        "endTime": "21:00",
+        "scheduleTimezone": "Europe/Paris"
+      }
     },
     { "@type": "BreadcrumbList", "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://kokolawson.com/" },
-        { "@type": "ListItem", "position": 2, "name": "Ressources", "item": "https://kokolawson.com/ressources/" } ] }
+        { "@type": "ListItem", "position": 2, "name": "Le live mensuel", "item": "https://kokolawson.com/live/" } ] }
   ]
 }
 </script>
@@ -64,62 +71,93 @@
   </div>
 </nav>
 
-<header class="minihero"><div class="wrap">
-    <span class="epi">OFFERT · UN ÉPISODE CHAQUE SAMEDI 8H · UN LIVE CHAQUE MOIS</span>
-    <h1>Les <em>ressources</em></h1>
-    <p class="sub">Tout mon contenu, classé selon les trois piliers : se connaître, reconnaître sa valeur, prendre sa place.</p>
-  </div></header>
+<section class="minihero">
+  <div class="wrap">
+    <span class="epi">OFFERT · UNE HEURE · CHAQUE 3ᵉ JEUDI DU MOIS</span>
+    <h1>Le live : tes questions, <em>mes réponses</em></h1>
+    <p class="lead">Une heure en direct, une fois par mois. Pas de grand discours théorique : un échange direct, des cas concrets, et des déclics pour débloquer ta situation.</p>
+    <p style="margin-top:26px"><a class="btn" href="#inscription">Je réserve ma place · offert</a></p>
+  </div>
+</section>
 
-  <section><div class="wrap">
-    <span class="kicker">Ma chaîne YouTube</span>
-    <h2>Un épisode chaque samedi, <em>classé par pilier</em></h2>
-    <p class="lead">Chaque titre ci-dessous est un lien : clique dessus pour ouvrir l'épisode.</p>
-    <div class="cards">
-      <div class="card">
-        <span class="epi">PILIER 01 · SE CONNAÎTRE</span>
-        <h3 style="margin-top:8px">Comprendre comment tu fonctionnes</h3>
-        <ul class="episodes">
-          <li><a href="https://www.youtube.com/watch?v=IikVQxt6Vcw">Être soi-même en entreprise sans jouer un rôle</a></li>
-          <li><a href="https://www.youtube.com/watch?v=ISj9BqbYa5M">Frustration au travail : ce que ta colère essaie de te dire</a></li>
-          <li><a href="https://www.youtube.com/watch?v=Z8jza9ZsS5E">Profil analytique : 10 signes que l'exigence t'étouffe</a></li>
-          <li><a href="https://www.youtube.com/watch?v=dOn2QnROcLw">Auto-sabotage : les 6 voix intérieures qui te freinent</a></li>
-          <li><a href="https://www.youtube.com/watch?v=41eClynB22Y">La symbolique des nombres pour mieux se connaître</a></li>
-        </ul>
-      </div>
-      <div class="card">
-        <span class="epi">PILIER 02 · RECONNAÎTRE SA VALEUR</span>
-        <h3 style="margin-top:8px">Sortir du doute permanent</h3>
-        <ul class="episodes">
-          <li><a href="https://www.youtube.com/watch?v=N6ZIpDpub_Y">Syndrome de l'imposteur : pourquoi les plus brillants doutent le plus</a></li>
-          <li><a href="https://www.youtube.com/watch?v=--J8BveyiDc">Confiance en soi : arrêter d'attendre la validation des autres</a></li>
-          <li><a href="https://www.youtube.com/watch?v=-y8pM00hU9Q">Affirmation de soi : exister sans avoir à le mériter</a></li>
-        </ul>
-      </div>
-      <div class="card">
-        <span class="epi">PILIER 03 · PRENDRE SA PLACE</span>
-        <h3 style="margin-top:8px">Agir là où ça compte</h3>
-        <ul class="episodes">
-          <li><a href="https://www.youtube.com/watch?v=fLc7uIog2ew">Prendre sa place au travail quand on a peur de se tromper</a></li>
-          <li><a href="https://www.youtube.com/watch?v=7x8AjDAorao">Prendre la parole en réunion : vaincre la peur d'être jugé</a></li>
-          <li><a href="https://www.youtube.com/watch?v=Ha7r3LLTZNQ">Invisible au travail : se rendre visible sans se trahir</a></li>
-          <li><a href="https://www.youtube.com/watch?v=GX0Hs1g7Ms8">Apprendre à dire non au travail sans culpabiliser</a></li>
-        </ul>
-      </div>
+<section><div class="wrap">
+  <span class="kicker">Ce qu'on y travaille</span>
+  <h2>Trois défis, ceux qui reviennent <em>à chaque fois</em></h2>
+  <p class="lead">Tu poses tes questions, je réponds sans tabou. Elles tournent presque toujours autour de ces trois-là.</p>
+  <div class="piliers">
+    <div class="pilier">
+      <span class="idx">DÉFI 01</span>
+      <h3>Lever tes blocages</h3>
+      <p>Comprendre comment tu fonctionnes, identifier les saboteurs qui te coupent la parole, et dépasser la peur du jugement.</p>
     </div>
-    <p style="margin-top:32px"><a class="btn ghost" href="https://www.youtube.com/@KokoLawson-A">Voir toute la chaîne</a></p>
-  </div></section>
+    <div class="pilier">
+      <span class="idx">DÉFI 02</span>
+      <h3>Assumer ta valeur</h3>
+      <p>Dompter le syndrome de l'imposteur, te sentir enfin légitime à ta place, et booster ta confiance en toi.</p>
+    </div>
+    <div class="pilier">
+      <span class="idx">DÉFI 03</span>
+      <h3>Prendre ta place</h3>
+      <p>Oser être entendu·e, poser tes limites, et développer ton leadership naturel.</p>
+    </div>
+  </div>
+  <p style="margin-top:28px;color:var(--muted);font-size:15.5px">Ce sont les trois mouvements de ma méthode, la CInA® (Clarifier, Incarner, Ancrer). Le live, c'est eux, en accès libre.</p>
+</div></section>
 
-  <section class="alt" id="quiz"><div class="wrap">
-    <span class="kicker">Auto-diagnostic · 2 minutes</span>
-    <h2>Ton profil <em>d'invisibilité</em></h2>
-    <p class="lead">Douze situations, un score, un profil. Et le parcours qui y répond. Sans inscription, et tu repars avec quelque chose même si tu n'en fais rien.</p>
-    <p style="margin-top:22px"><a class="btn" href="/quiz/">Faire le diagnostic · 2 min</a></p>
-  </div></section>
+<section class="alt"><div class="wrap">
+  <span class="kicker">Une précision qui compte</span>
+  <h2>Tu peux venir <em>sans rien dire</em></h2>
+  <p class="lead">Si tu es du genre à préparer deux fois plus et à intervenir deux fois moins, l'idée de poser une question en direct peut suffire à te faire renoncer. Alors autant le dire tout de suite : rien ne t'oblige à parler.</p>
+  <div class="piliers">
+    <div class="pilier">
+      <span class="idx">CAMÉRA</span>
+      <h3>Tu restes invisible si tu veux</h3>
+      <p>Pas besoin d'allumer ta vidéo. Beaucoup de personnes suivent le live sans jamais apparaître, et c'est parfaitement bien comme ça.</p>
+    </div>
+    <div class="pilier">
+      <span class="idx">QUESTIONS</span>
+      <h3>À l'avance, ou dans le chat</h3>
+      <p>Tu peux m'envoyer ta question par écrit avant le live, ou la déposer dans le chat pendant. Je la lis et j'y réponds sans te nommer.</p>
+    </div>
+    <div class="pilier">
+      <span class="idx">ÉCOUTE</span>
+      <h3>Venir juste écouter, ça compte</h3>
+      <p>Les questions des autres sont souvent les tiennes. Assister en silence est une façon parfaitement valable d'y participer.</p>
+    </div>
+  </div>
+</div></section>
 
-  <section id="newsletter"><div class="wrap">
-    <span class="kicker">Rester en contact</span>
-    <h2>Le live, et mes <em>articles</em></h2>
-    <p class="lead">Chaque 3ᵉ jeudi du mois, de 20h à 21h, une heure en direct où tu poses tes questions, sans tabou. Tu peux venir sans parler ni allumer ta caméra : <a href="/live/" style="color:var(--teal);font-weight:700">voir en détail ce qu'on y travaille</a>. Et entre deux, mes nouveaux articles, avec des clés et des astuces à appliquer tout de suite.</p>
+<section><div class="wrap">
+  <span class="kicker">En pratique</span>
+  <h2>Quand, et comment <em>s'y retrouver</em></h2>
+  <div class="piliers">
+    <div class="pilier">
+      <span class="idx">QUAND</span>
+      <h3>Chaque 3ᵉ jeudi du mois</h3>
+      <p>De 20h à 21h, heure de Paris. Après la journée de travail, avant que la soirée soit finie.</p>
+    </div>
+    <div class="pilier">
+      <span class="idx">COMBIEN</span>
+      <h3>Offert, sans condition</h3>
+      <p>Rien à payer, rien à acheter ensuite. Tu viens, tu repars avec ce que tu es venu·e chercher.</p>
+    </div>
+    <div class="pilier">
+      <span class="idx">COMMENT</span>
+      <h3>Sur Google Meet</h3>
+      <p>Tu t'inscris une fois, et tu reçois l'invitation avec le lien de connexion avant chaque rendez-vous.</p>
+    </div>
+    <div class="pilier">
+      <span class="idx">REPLAY</span>
+      <h3>Pas libre ce jeudi-là ?</h3>
+      <p>Le replay est envoyé aux inscrits. Tu peux t'inscrire même en sachant que tu ne pourras pas être là en direct.</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="alt" id="inscription"><div class="wrap">
+  <span class="kicker">Réserver ma place</span>
+  <h2>Reçois l'invitation <em>avant chaque live</em></h2>
+  <p class="lead">Prénom, email, et c'est fait. Tu reçois le rappel et le lien de connexion avant chaque rendez-vous.</p>
       <!-- Begin Brevo Form -->
       <div class="sib-form" style="margin-top:26px">
         <div id="sib-form-container" class="sib-form-container">
@@ -176,22 +214,15 @@
         </div>
       </div>
       <!-- End Brevo Form -->
-    <p style="font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-top:14px">TU REÇOIS LA NEWSLETTER ET L&#39;INVITATION AU LIVE MENSUEL · DÉSABONNEMENT EN UN CLIC</p>
+  <p style="font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-top:14px">TU REÇOIS LA NEWSLETTER ET L&#39;INVITATION AU LIVE MENSUEL · DÉSABONNEMENT EN UN CLIC</p>
+</div></section>
 
-    <!-- On se retrouve aussi ici, icônes simples -->
-    <div style="margin-top:36px;display:flex;align-items:center;gap:14px">
-      <span style="font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;color:var(--muted)">ON SE RETROUVE AUSSI ICI</span>
-      <a href="https://www.youtube.com/@KokoLawson-A" title="YouTube · un épisode chaque samedi 8h" style="width:44px;height:44px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;transition:.2s" onmouseover="this.style.background='#C6A016'" onmouseout="this.style.background='#002060'">
-        <svg width="20" height="20" viewBox="0 0 24 24"><path d="M8.5 7v10l8-5-8-5z" fill="#fff"/></svg>
-      </a>
-      <a href="mailto:contact@kokolawson.com" title="contact@kokolawson.com" style="width:44px;height:44px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;transition:.2s" onmouseover="this.style.background='#C6A016'" onmouseout="this.style.background='#002060'">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4.2" stroke="#fff" stroke-width="1.7"/><path d="M16.2 12v1.3c0 1.2.9 2 2 2 1.4 0 2.3-1 2.3-3.3A8.5 8.5 0 1 0 17 19.2" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/></svg>
-      </a>
-      <a href="https://chat.whatsapp.com/CPJSt3vHgUmIiW5hnhfu9c" title="Rejoindre la communauté WhatsApp" style="width:44px;height:44px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;transition:.2s" onmouseover="this.style.background='#C6A016'" onmouseout="this.style.background='#002060'">
-        <svg width="21" height="21" viewBox="0 0 24 24"><path d="M12 4a8 8 0 0 0-6.9 12L4 20l4.1-1.06A8 8 0 1 0 12 4zm3.9 10.9c-.18.5-1.05.98-1.46 1.02-.4.04-.77.18-2.6-.54-2.2-.87-3.57-3.1-3.68-3.25-.1-.15-.87-1.16-.87-2.22s.55-1.57.75-1.79c.2-.2.43-.26.57-.26l.4.01c.13 0 .3-.05.48.36l.66 1.6c.06.13.1.27.02.42-.07.15-.11.24-.22.37l-.33.4c-.11.1-.23.22-.1.44.12.22.56.94 1.22 1.52.84.74 1.54.97 1.76 1.08.22.11.35.09.48-.05.13-.14.55-.64.7-.86.15-.21.3-.18.5-.11l1.57.74c.22.11.37.16.42.26.06.1.06.56-.15 1.09z" fill="#fff"/></svg>
-      </a>
-    </div>
-  </div></section>
+<div class="cta-band">
+  <p class="tagline" style="margin-bottom:14px">ET SI TU VEUX ALLER PLUS LOIN_</p>
+  <h2>Le live répond à tes questions. <em>La Séance Découverte parle de toi.</em></h2>
+  <p style="color:#b9c3dd;max-width:560px;margin:0 auto 26px">45 minutes en tête-à-tête pour comprendre ce qui se joue dans ta situation, sans engagement.</p>
+  <a class="btn" href="/seance-decouverte/">Réserver ma Séance Découverte · offert</a>
+</div>
 
 <footer class="site">
   <div class="wrap foot">
@@ -220,7 +251,6 @@
   var AUTOHIDE = Boolean(0);
 </script>
 <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
-</footer>
 
 <script src="/cookie-consent.js"></script>
 

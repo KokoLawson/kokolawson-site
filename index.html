@@ -19,55 +19,80 @@
 <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 
 <link rel="stylesheet" href="/style.css">
-<style>
-  /* ---- Formulaire Brevo, habillé charte ---- */
-  :where(.sib-form-message-panel){display:none}
-  :where(.sib-form-message-panel .sib-notification__icon){width:20px;height:20px}
-  .sib-form{background:transparent!important;padding:0!important;text-align:left!important}
-  #sib-container{background:transparent!important;border:none!important;padding:0!important;max-width:640px!important}
-  #sib-container .entry__label{font-family:var(--sans)!important;color:var(--navy)!important;font-size:14px!important;font-weight:500;display:block;line-height:20px!important;margin:0 0 6px!important}
-  #sib-container .input{font-family:var(--sans)!important;border:1px solid var(--line)!important;border-radius:4px!important;background:#fff!important;box-sizing:border-box!important;height:50px;padding:0 14px!important;font-size:16px!important;line-height:48px!important;width:100%}
-  #sib-container input::placeholder{font-family:var(--sans);color:#9aa3b2}
-  #sib-container .sib-form-block__button{font-family:var(--sans)!important;font-weight:700!important;font-size:15.5px!important;color:var(--navy-deep)!important;background:var(--gold)!important;border:none!important;border-radius:4px!important;box-sizing:border-box;height:50px;padding:0 26px!important;cursor:pointer;white-space:nowrap}
-  #sib-container .sib-form-block__button:hover{filter:brightness(1.07)}
-  /* Disposition en ligne sur l'accueil, empilée sur mobile */
-  .home-signup{display:grid;grid-template-columns:1fr 1.3fr auto;gap:14px;align-items:start}
-  .home-signup .sib-form-block{padding:0!important;margin:0!important}
-  .home-signup .form__entry{padding:0!important;margin:0!important}
-  /* neutralise le flex + gap de sib-styles pour que la hauteur du bloc
-     vaille exactement libellé (20+6) + champ (50) = 76px */
-  .home-signup .form__label-row{display:block!important;margin:0!important;padding:0!important;gap:0!important}
-  .home-signup .entry__field{display:block!important;height:50px!important;line-height:0!important;font-size:0!important;gap:0!important}
-  .home-signup .entry__field .input{display:block!important;margin:0!important}
-  .home-signup .entry__error{margin-top:6px;padding:6px 8px}
-  .home-signup .entry__error:empty{display:none!important}
-  /* cale le bouton au niveau des champs : hauteur du libellé (20px) + sa marge (6px).
-     Ancré en haut, donc il ne bouge pas si un message d'erreur s'affiche sous un champ. */
-  .home-signup > .sib-form-block:last-child{align-self:start;margin-top:27px!important}
-  @media(max-width:720px){
-    .home-signup{grid-template-columns:1fr}
-    .home-signup > .sib-form-block:last-child{align-self:stretch;margin-top:0!important}
-    #sib-container .sib-form-block__button{width:100%;justify-content:center}
-  }
-</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "Koko Lawson Adoté, Coach professionnelle co-active",
-  "slogan": "Je modélise la confiance",
-  "description": "Coaching individuel pour profils experts : confiance, posture, prise de parole, visibilité professionnelle. Séance Découverte offerte de 45 minutes.",
-  "url": "https://kokolawson.com",
-  "email": "contact@kokolawson.com",
-  "founder": {
-    "@type": "Person",
-    "name": "Koko Lawson Adoté",
-    "jobTitle": "Coach professionnelle co-active & Actuaire",
-    "alumniOf": "ENSAE Paris",
-    "sameAs": ["https://www.linkedin.com/in/koko-lawson-adote/", "https://www.youtube.com/@KokoLawson-A"]
-  },
-  "areaServed": "FR",
-  "priceRange": "250€–2300€"
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://kokolawson.com/#koko",
+      "name": "Koko Lawson Adoté",
+      "url": "https://kokolawson.com/",
+      "email": "contact@kokolawson.com",
+      "image": "https://kokolawson.com/photo-koko.jpg",
+      "jobTitle": "Coach professionnelle co-active et actuaire",
+      "description": "Coach professionnelle certifiée CTI/ICF et actuaire depuis 17 ans. Accompagne les profils experts sur la posture, la légitimité et la prise de parole.",
+      "alumniOf": [
+        { "@type": "CollegeOrUniversity", "name": "ENSAE Paris" },
+        { "@type": "CollegeOrUniversity", "name": "Université Paris Dauphine" },
+        { "@type": "CollegeOrUniversity", "name": "Université Paris Cité" }
+      ],
+      "knowsAbout": [
+        "Coaching professionnel",
+        "Syndrome de l'imposteur",
+        "Prise de parole en réunion",
+        "Posture de leadership",
+        "Légitimité professionnelle",
+        "Actuariat"
+      ],
+      "knowsLanguage": ["fr", "en"],
+      "sameAs": [
+        "https://www.linkedin.com/in/koko-lawson-adote/",
+        "https://www.youtube.com/@KokoLawson-A"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://kokolawson.com/#website",
+      "url": "https://kokolawson.com/",
+      "name": "Koko Lawson Adoté",
+      "inLanguage": "fr-FR",
+      "publisher": { "@id": "https://kokolawson.com/#koko" }
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://kokolawson.com/#business",
+      "name": "Koko Lawson Adoté, coaching pour profils experts",
+      "url": "https://kokolawson.com/",
+      "email": "contact@kokolawson.com",
+      "image": "https://kokolawson.com/photo-koko.jpg",
+      "slogan": "Je modélise la confiance",
+      "description": "Coaching individuel pour profils experts : confiance, posture, prise de parole, visibilité professionnelle. Séance Découverte offerte de 45 minutes.",
+      "founder": { "@id": "https://kokolawson.com/#koko" },
+      "employee": { "@id": "https://kokolawson.com/#koko" },
+      "areaServed": [
+        { "@type": "Country", "name": "France" },
+        { "@type": "Country", "name": "Suisse" },
+        { "@type": "Country", "name": "Royaume-Uni" }
+      ],
+      "availableLanguage": ["fr", "en"],
+      "priceRange": "250€–2300€",
+      "knowsAbout": { "@id": "https://kokolawson.com/#koko" },
+      "sameAs": [
+        "https://www.linkedin.com/in/koko-lawson-adote/",
+        "https://www.youtube.com/@KokoLawson-A"
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://kokolawson.com/#webpage",
+      "url": "https://kokolawson.com/",
+      "name": "Koko Lawson Adoté : coach des profils experts",
+      "isPartOf": { "@id": "https://kokolawson.com/#website" },
+      "about": { "@id": "https://kokolawson.com/#business" },
+      "inLanguage": "fr-FR"
+    }
+  ]
 }
 </script>
 </head>
@@ -134,9 +159,26 @@
 
   <section style="padding-top:0;padding-bottom:60px">
     <div class="wrap">
-      <span class="kicker">Gratuit, chaque semaine</span>
+      <span class="kicker">Offert, sans engagement</span>
       <h2>Un épisode chaque samedi. <em>Un live chaque mois.</em></h2>
-      <p class="lead">YouTube, newsletter, quiz d'auto-diagnostic : commence par là si tu n'es pas prêt·e à parler. C'est fait pour ça.</p>
+      <p class="lead">Tu veux peut-être me découvrir un peu plus ? Commence ici, tu ne t'engages à rien.</p>
+
+      <div class="piliers" style="margin-top:34px">
+        <div class="pilier">
+          <span class="idx">MON LIVE MENSUEL</span>
+          <h3>Chaque 3ᵉ jeudi, de 20h à 21h</h3>
+          <p>Une heure en direct où tu poses tes questions, sans tabou. Tu peux venir sans parler ni allumer ta caméra, et le replay est envoyé aux inscrits.</p>
+          <p style="margin-top:16px"><a class="btn navy" href="/live/">Découvrir le live</a></p>
+        </div>
+        <div class="pilier">
+          <span class="idx">MA CHAÎNE YOUTUBE</span>
+          <h3>En attendant, un épisode chaque samedi</h3>
+          <p>Des épisodes courts sur la posture, la légitimité et la prise de parole, classés selon les trois piliers de mes accompagnements : se connaître, reconnaître sa valeur, prendre sa place.</p>
+          <p style="margin-top:16px"><a class="btn ghost" href="https://www.youtube.com/@KokoLawson-A">S'abonner à la chaîne</a></p>
+        </div>
+      </div>
+
+      <p style="font-family:var(--mono);font-size:13px;font-weight:500;letter-spacing:.1em;color:var(--muted);margin-top:44px">RECEVOIR L&#39;INVITATION AU LIVE ET MES ARTICLES</p>
 
       <!-- Begin Brevo Form -->
       <div class="sib-form" style="margin-top:26px">
@@ -153,7 +195,7 @@
               <span class="sib-form-message-panel__inner-text">Bienvenue ! Vérifie ta boîte mail pour confirmer ton inscription. 🙏🏾</span>
             </div>
           </div>
-          <div id="sib-container" class="sib-container--large sib-container--vertical">
+          <div id="sib-container" class="sib-container--large sib-container--vertical wide">
             <form id="sib-form" method="POST" action="https://fcbd5056.sibforms.com/serve/MUIFALop1G5b_twKPdtunCKFnWIY0jEVw-j2q8FbjJhi8-QoV1ICXFK9MVQPEThO3ojbCegdjA07CYQewt6f9_bRKDPW7S1oslKvJ9Y7955NeNjp0znuKCWaUzQ7t_arELpw8ThcLglIQQ1MONUMuObUSUWJyTOMiV74-GxRVLs-gt53GyWDnPV-IJHtJwwbeRjOtceWc_qvj-HQAw==" data-type="subscription">
               <div class="home-signup">
                 <div class="sib-input sib-form-block">
@@ -196,7 +238,6 @@
       <!-- End Brevo Form -->
       <p style="font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-top:14px">TU REÇOIS LA NEWSLETTER ET L&#39;INVITATION AU LIVE MENSUEL · DÉSABONNEMENT EN UN CLIC</p>
 
-      <p style="margin-top:22px"><a href="/ressources/" style="color:var(--teal);font-weight:700;cursor:pointer">Ou explorer les ressources et faire le quiz →</a></p>
     </div>
   </section>
 
