@@ -50,8 +50,50 @@
     gtag('config', GA_ID);
   }
 
+
+  // ---- Mesure : evenements envoyes a GA4 -------------------------
+  // Les ecouteurs sont poses dans tous les cas, mais ils ne remontent
+  // rien tant que gtag n'existe pas. Donc rien n'est mesure avant
+  // acceptation des cookies : les chiffres sous-estiment la realite.
+  function poserEvenements() {
+
+    document.addEventListener('click', function (e) {
+      if (!window.gtag || !e.target || !e.target.closest) return;
+      var a = e.target.closest('a');
+      if (!a) return;
+      var href = a.getAttribute('href') || '';
+
+      // La reservation part sur calendar.app.google : sans cet evenement,
+      // la seule conversion du site est invisible dans GA.
+      if (href.indexOf('calendar.app.google') > -1) {
+        gtag('event', 'clic_reservation', { page: location.pathname });
+
+      } else if (href.indexOf('youtube.com') > -1) {
+        gtag('event', 'clic_youtube', {
+          page: location.pathname,
+          cible: href.indexOf('/watch') > -1 ? 'episode' : 'chaine'
+        });
+      }
+    });
+
+    // Inscription : on attend l'apparition du panneau de succes de Brevo.
+    // Ecouter la soumission compterait aussi les envois rejetes.
+    var succes = document.getElementById('success-message');
+    if (succes && window.MutationObserver) {
+      new MutationObserver(function () {
+        if (succes.getAttribute('data-compte')) return;
+        if (getComputedStyle(succes).display === 'none') return;
+        succes.setAttribute('data-compte', '1');
+        if (window.gtag) {
+          gtag('event', 'inscription_newsletter', { page: location.pathname });
+        }
+      }).observe(succes, { attributes: true, attributeFilter: ['style', 'class'] });
+    }
+  }
+
   function init() {
     injecterBandeau();
+    poserEvenements();
     var consent = localStorage.getItem('cookie_consent');
     if (consent === 'accepted') {
       chargerGA();
