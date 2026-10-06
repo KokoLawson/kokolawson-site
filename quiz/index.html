@@ -270,14 +270,18 @@ function envoyer(e){
       site: f.site.value
     })
   })
-  .then(function(rep){ if (!rep.ok) throw new Error(rep.status); return rep.json(); })
+  .then(function(rep){
+    if (!rep.ok) throw new Error('HTTP ' + rep.status);
+    return rep.json().catch(function(){ throw new Error('réponse illisible'); });
+  })
   .then(function(a){
     if (!a.profil) throw new Error('vide');
     afficher(a, email);
     if (window.gtag) gtag('event', 'quiz_email', { profil: a.profil.nom, envoye: a.envoye });
   })
-  .catch(function(){
-    erreur.textContent = 'L\'envoi n\'a pas abouti, à cause d\'un souci technique de mon côté. Réessaie dans un instant, ou écris-moi à contact@kokolawson.com.';
+  .catch(function(err){
+    // Le code entre parenthèses sert au diagnostic : statut HTTP, réponse illisible ou erreur réseau du navigateur.
+    erreur.textContent = 'L\'envoi n\'a pas abouti, à cause d\'un souci technique de mon côté. Réessaie dans un instant, ou écris-moi à contact@kokolawson.com. (code : ' + ((err && (err.name + ' ' + err.message)) || 'inconnu') + ')';
     erreur.hidden = false;
     bouton.disabled = false;
     bouton.textContent = 'Recevoir mon analyse';
