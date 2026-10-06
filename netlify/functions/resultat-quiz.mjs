@@ -110,7 +110,9 @@ export default async (req) => {
   }
 
   // Champ piège invisible : un robot le remplit, une personne non.
-  if (donnees.site) return json({ envoye: false }, 200);
+  // Son nom ne doit rien évoquer aux navigateurs : un champ « site » était rempli par la saisie
+  // automatique, et des visiteuses réelles étaient prises pour des robots.
+  if (donnees.controle) return json({ envoye: false }, 200);
 
   const email = String(donnees.email || "").trim().toLowerCase();
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 200) {

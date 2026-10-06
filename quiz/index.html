@@ -230,7 +230,7 @@ function score(){
         '<label for="quiz-prenom">Ton prénom<input id="quiz-prenom" name="prenom" type="text" autocomplete="given-name" maxlength="60" placeholder="Prénom"></label>' +
         '<label for="quiz-email">Ton adresse email<input id="quiz-email" name="email" type="email" autocomplete="email" maxlength="200" placeholder="ton@email.com" required></label>' +
       '</div>' +
-      '<input class="piege" name="site" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">' +
+      '<input class="piege" name="zq_controle" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">' +
       '<p class="quiz-erreur" role="alert" hidden></p>' +
       '<button class="btn" type="submit">Recevoir mon analyse</button>' +
       '<p class="mention">TU REÇOIS AUSSI MA NEWSLETTER DU SAMEDI ET MES INVITATIONS À MES LIVES DU JEUDI · DÉSABONNEMENT EN UN CLIC</p>' +
@@ -267,7 +267,7 @@ function envoyer(e){
       prenom: f.prenom.value.trim(),
       email: email,
       coches: cochees(),
-      site: f.site.value
+      controle: f.zq_controle.value
     })
   })
   .then(function(rep){
