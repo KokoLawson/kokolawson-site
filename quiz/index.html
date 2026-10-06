@@ -33,7 +33,6 @@
   .quiz .quiz-form input[type=text],.quiz .quiz-form input[type=email]{margin:0;height:50px;padding:0 14px;font:16px var(--sans);border:1px solid var(--line);border-radius:4px;background:#fff;color:var(--ink);width:100%;box-sizing:border-box}
   .quiz .quiz-form input:focus-visible{outline:2px solid var(--teal);outline-offset:1px}
   #quizresult .question{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--navy)}
-  .quiz-form .piege{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
   .quiz-form button{align-self:flex-start}
   .quiz-form button[disabled]{opacity:.7;cursor:wait}
   .quiz-form .quiz-erreur{font-size:14.5px;color:#661d1d;background:#ffeded;border-radius:4px;padding:8px 12px}
@@ -201,6 +200,9 @@
 // Le nom du profil et le score s'affichent tout de suite. L'analyse complète
 // (texte, quick win, astuces, questions) est envoyée par mail par netlify/functions/resultat-quiz.mjs,
 // qui la renvoie aussi pour l'afficher ici si le mail échoue. Seuils et noms identiques dans les deux fichiers.
+// Heure d'affichage du formulaire : la fonction écarte les envois trop rapides pour être humains.
+var formAffiche = 0;
+
 var PROFILS = [
   { max: 3,  nom: "Vigie ponctuelle" },
   { max: 7,  nom: "Expert·e en retrait" },
@@ -230,7 +232,6 @@ function score(){
         '<label for="quiz-prenom">Ton prénom<input id="quiz-prenom" name="prenom" type="text" autocomplete="given-name" maxlength="60" placeholder="Prénom"></label>' +
         '<label for="quiz-email">Ton adresse email<input id="quiz-email" name="email" type="email" autocomplete="email" maxlength="200" placeholder="ton@email.com" required></label>' +
       '</div>' +
-      '<input class="piege" name="zq_controle" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">' +
       '<p class="quiz-erreur" role="alert" hidden></p>' +
       '<button class="btn" type="submit">Recevoir mon analyse</button>' +
       '<p class="mention">TU REÇOIS AUSSI MA NEWSLETTER DU SAMEDI ET MES INVITATIONS À MES LIVES DU JEUDI · DÉSABONNEMENT EN UN CLIC</p>' +
@@ -238,6 +239,7 @@ function score(){
 
   document.getElementById('quiz-form').addEventListener('submit', envoyer);
 
+  formAffiche = Date.now();
   r.style.display = 'block';
   r.setAttribute('tabindex','-1');
   r.focus();
@@ -267,7 +269,7 @@ function envoyer(e){
       prenom: f.prenom.value.trim(),
       email: email,
       coches: cochees(),
-      controle: f.zq_controle.value
+      delai: Date.now() - formAffiche
     })
   })
   .then(function(rep){

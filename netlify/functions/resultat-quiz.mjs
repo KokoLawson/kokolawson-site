@@ -109,10 +109,10 @@ export default async (req) => {
     return json({ erreur: "Contenu illisible" }, 400);
   }
 
-  // Champ piège invisible : un robot le remplit, une personne non.
-  // Son nom ne doit rien évoquer aux navigateurs : un champ « site » était rempli par la saisie
-  // automatique, et des visiteuses réelles étaient prises pour des robots.
-  if (donnees.controle) return json({ envoye: false }, 200);
+  // Anti-robot : un envoi moins d'une seconde après l'affichage du formulaire n'est pas humain.
+  // Pas de champ piège caché : la saisie automatique des navigateurs et des gestionnaires de
+  // mots de passe le remplissait, et de vraies visiteuses étaient prises pour des robots.
+  const tropRapide = !(Number(donnees.delai) >= 1000);
 
   const email = String(donnees.email || "").trim().toLowerCase();
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 200) {
@@ -126,6 +126,10 @@ export default async (req) => {
   const profil = PROFILS.find((p) => score <= p.max);
   const situations = coches.map((i) => SITUATIONS[i]);
   const analyse = { score, profil, situations };
+
+  // Envoi trop rapide : rien n'est envoyé ni enregistré, mais l'analyse revient à la page,
+  // pour qu'une personne très rapide prise pour un robot la lise quand même.
+  if (tropRapide) return json({ envoye: false, raison: "rapide", ...analyse }, 200);
 
   if (!cleBrevo) {
     console.error("Configuration incomplète : BREVO_API_KEY absent");
