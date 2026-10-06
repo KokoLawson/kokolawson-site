@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Auto-diagnostic : ton profil d'invisibilité en 2 minutes</title>
-<meta name="description" content="12 situations, un score, un profil. Découvre à quel point le mécanisme de l'effacement tourne chez toi, et le parcours qui y répond. Gratuit, sans inscription.">
+<meta name="description" content="12 situations, un score, un profil. Découvre à quel point le mécanisme de l'effacement tourne chez toi, et le parcours qui y répond. Gratuit, résultat immédiat.">
 <link rel="canonical" href="https://kokolawson.com/quiz/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Auto-diagnostic : ton profil d'invisibilité en 2 minutes">
-<meta property="og:description" content="12 situations, un score, un profil. Découvre à quel point le mécanisme de l'effacement tourne chez toi, et le parcours qui y répond. Gratuit, sans inscription.">
+<meta property="og:description" content="12 situations, un score, un profil. Découvre à quel point le mécanisme de l'effacement tourne chez toi, et le parcours qui y répond. Gratuit, résultat immédiat.">
 <meta property="og:url" content="https://kokolawson.com/quiz/">
 <meta property="og:image" content="https://kokolawson.com/photo-koko.jpg">
 <meta property="og:locale" content="fr_FR">
@@ -25,6 +25,21 @@
   .reco-parcours .nom{font-family:var(--serif);font-size:20px;font-weight:600;color:var(--navy);display:block}
   .reco-parcours p{margin-top:8px;font-size:15.5px;color:var(--muted)}
   .reco-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+  /* Formulaire de l'analyse complète, dans le résultat */
+  #quizresult .teaser{margin-top:10px;font-size:15.5px;color:var(--muted)}
+  .quiz-form{margin-top:18px;display:flex;flex-direction:column;gap:14px}
+  .quiz-form .champs{display:grid;grid-template-columns:1fr 1.3fr;gap:14px}
+  .quiz .quiz-form label{display:flex;flex-direction:column;gap:6px;padding:0;border:0;font-size:14px;cursor:default}
+  .quiz .quiz-form input[type=text],.quiz .quiz-form input[type=email]{margin:0;height:50px;padding:0 14px;font:16px var(--sans);border:1px solid var(--line);border-radius:4px;background:#fff;color:var(--ink);width:100%;box-sizing:border-box}
+  .quiz .quiz-form input:focus-visible{outline:2px solid var(--teal);outline-offset:1px}
+  .quiz .quiz-form label.consent{flex-direction:row;align-items:flex-start;gap:10px;font-size:14.5px;color:var(--muted);cursor:pointer}
+  .quiz-form .piege{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+  .quiz-form button{align-self:flex-start}
+  .quiz-form button[disabled]{opacity:.7;cursor:wait}
+  .quiz-form .quiz-erreur{font-size:14.5px;color:#661d1d;background:#ffeded;border-radius:4px;padding:8px 12px}
+  .quiz-form .mention{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+  #quizresult .envoi{margin-bottom:12px;font-size:15px;color:var(--teal);font-weight:700}
+  @media(max-width:620px){.quiz-form .champs{grid-template-columns:1fr}.quiz-form button{align-self:stretch}}
 </style>
 <script type="application/ld+json">
 {
@@ -72,7 +87,7 @@
 
 <section class="minihero">
   <div class="wrap">
-    <span class="epi">AUTO-DIAGNOSTIC · 2 MINUTES · SANS INSCRIPTION</span>
+    <span class="epi">AUTO-DIAGNOSTIC · 2 MINUTES · RÉSULTAT IMMÉDIAT</span>
     <h1>Ton profil <em>d'invisibilité</em></h1>
     <p class="lead">Douze situations. Coche celles qui te ressemblent. Le score parle de lui-même, et il t'indique par où commencer.</p>
   </div>
@@ -182,53 +197,114 @@
   </div>
 </footer>
 <script>
-// Auto-diagnostic : 12 affirmations, 3 profils, chacun orienté vers le parcours
-// que ce profil appelle. Les libellés de parcours viennent de /accompagnement/.
+// Auto-diagnostic : 12 affirmations, 3 profils.
+// Le nom du profil et le score s'affichent tout de suite. L'analyse complète
+// (texte, parcours, raisons) est envoyée par mail par netlify/functions/resultat-quiz.mjs,
+// qui la renvoie aussi pour l'afficher ici. Seuils et noms identiques dans les deux fichiers.
 var PROFILS = [
-  { max: 3,
-    nom: "Vigie ponctuelle",
-    texte: "Ton invisibilité est situationnelle : elle se déclenche dans des contextes précis, pas en permanence. C'est le profil le plus rapide à faire bouger.",
-    parcours: "Focus",
-    detail: "5 séances · 900 €",
-    pourquoi: "Parce qu'il s'agit de dénouer des situations identifiables, pas de déloger un fonctionnement de fond. Un objectif défini dès la première séance, un résultat observable à la dernière." },
-  { max: 7,
-    nom: "Expert·e en retrait",
-    texte: "Le mécanisme est installé : tu compenses par l'excellence ce que tu n'oses pas encore occuper en présence. Ce n'est plus une situation, c'est un fonctionnement qui se répète.",
-    parcours: "Maîtrise",
-    detail: "8 séances · 1 400 €",
-    pourquoi: "Parce qu'un fonctionnement installé ne se dénoue pas en cinq séances. On cartographie le mécanisme en profondeur, puis on installe la posture et on l'ancre." },
-  { max: 12,
-    nom: "Invisibilité structurelle",
-    texte: "Tu fonctionnes probablement en sur-adaptation permanente : un coût en énergie, en euros et en trajectoire. Ce n'est pas un trait de personnalité, c'est une posture apprise, donc désapprenable.",
-    parcours: "Prends ta place",
-    detail: "12 séances + 4 ateliers · 2 300 €",
-    pourquoi: "Parce qu'à ce niveau, ce n'est pas un comportement à corriger mais une posture à reconstruire : présence, affirmation, valorisation de soi, sens et direction." }
+  { max: 3,  nom: "Vigie ponctuelle" },
+  { max: 7,  nom: "Expert·e en retrait" },
+  { max: 12, nom: "Invisibilité structurelle" }
 ];
 
+function echappe(t){
+  return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function cochees(){
+  var cases = document.querySelectorAll('.q'), res = [];
+  for (var i = 0; i < cases.length; i++) if (cases[i].checked) res.push(i);
+  return res;
+}
+
 function score(){
-  var n = document.querySelectorAll('.q:checked').length;
+  var n = cochees().length;
   var p = PROFILS.find(function(x){ return n <= x.max; });
   var r = document.getElementById('quizresult');
 
   r.innerHTML =
-    '<b>Profil : ' + p.nom + ' (' + n + '/12).</b> ' + p.texte +
-    '<div class="reco-parcours">' +
-      '<span class="lab">Le parcours qui y répond</span>' +
-      '<span class="nom">' + p.parcours + ' · ' + p.detail + '</span>' +
-      '<p>' + p.pourquoi + '</p>' +
-    '</div>' +
-    '<div class="reco-actions">' +
-      '<a class="btn small" href="/accompagnement/">Découvrir ' + p.parcours + '</a>' +
-      '<a class="btn small ghost" href="#newsletter">Recevoir le live du 3ᵉ jeudi et mes articles</a>' +
-      '<a class="btn small ghost" href="/seance-decouverte/">En parler · 45 min offert</a>' +
-    '</div>';
+    '<b>Profil : ' + p.nom + ' (' + n + '/12).</b>' +
+    '<p class="teaser">Ton analyse complète est prête : ce que ce profil dit de toi, les situations que tu as cochées, et le parcours qui y répond. Je te l\'envoie par mail, et elle s\'affiche aussi ici.</p>' +
+    '<form id="quiz-form" class="quiz-form" novalidate>' +
+      '<div class="champs">' +
+        '<label for="quiz-prenom">Ton prénom<input id="quiz-prenom" name="prenom" type="text" autocomplete="given-name" maxlength="60" placeholder="Prénom"></label>' +
+        '<label for="quiz-email">Ton adresse email<input id="quiz-email" name="email" type="email" autocomplete="email" maxlength="200" placeholder="ton@email.com" required></label>' +
+      '</div>' +
+      '<label class="consent" for="quiz-consent"><input id="quiz-consent" name="consentement" type="checkbox"> Je veux aussi recevoir la newsletter du samedi et l\'invitation au live mensuel. Désabonnement en un clic.</label>' +
+      '<input class="piege" name="site" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">' +
+      '<p class="quiz-erreur" role="alert" hidden></p>' +
+      '<button class="btn" type="submit">Recevoir mon analyse</button>' +
+      '<p class="mention">TON ADRESSE SERT À T\'ENVOYER TON ANALYSE · AUCUN AUTRE MAIL SANS TON ACCORD</p>' +
+    '</form>';
+
+  document.getElementById('quiz-form').addEventListener('submit', envoyer);
 
   r.style.display = 'block';
   r.setAttribute('tabindex','-1');
   r.focus();
 
   // Remonté dans GA4 si le visiteur a accepté les cookies (phase 6).
-  if (window.gtag) gtag('event', 'quiz_termine', { profil: p.parcours, score: n });
+  if (window.gtag) gtag('event', 'quiz_termine', { profil: p.nom, score: n });
+}
+
+function envoyer(e){
+  e.preventDefault();
+  var f = e.target, bouton = f.querySelector('button'), erreur = f.querySelector('.quiz-erreur');
+  var email = f.email.value.trim();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    erreur.textContent = 'Vérifie ton adresse email : elle semble incomplète.';
+    erreur.hidden = false;
+    f.email.focus();
+    return;
+  }
+  erreur.hidden = true;
+  bouton.disabled = true;
+  bouton.textContent = 'Envoi en cours…';
+
+  fetch('/api/resultat-quiz', {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({
+      prenom: f.prenom.value.trim(),
+      email: email,
+      coches: cochees(),
+      consentement: f.consentement.checked,
+      site: f.site.value
+    })
+  })
+  .then(function(rep){ if (!rep.ok) throw new Error(rep.status); return rep.json(); })
+  .then(function(a){
+    if (!a.profil) throw new Error('vide');
+    afficher(a, email);
+    if (window.gtag) gtag('event', 'quiz_email', { profil: a.profil.nom, consentement: f.consentement.checked });
+  })
+  .catch(function(){
+    erreur.textContent = 'L\'envoi n\'a pas abouti, à cause d\'un souci technique de mon côté. Réessaie dans un instant, ou écris-moi à contact@kokolawson.com.';
+    erreur.hidden = false;
+    bouton.disabled = false;
+    bouton.textContent = 'Recevoir mon analyse';
+  });
+}
+
+function afficher(a, email){
+  var p = a.profil, r = document.getElementById('quizresult');
+  var envoi = a.envoye
+    ? '<p class="envoi">C\'est envoyé à ' + echappe(email) + '. Si rien n\'arrive d\'ici quelques minutes, regarde dans tes spams.</p>'
+    : '<p class="envoi">Le mail n\'a pas pu partir, mais ton analyse est juste en dessous. Tu peux aussi m\'écrire à contact@kokolawson.com.</p>';
+  r.innerHTML =
+    envoi +
+    '<b>Profil : ' + echappe(p.nom) + ' (' + a.score + '/12).</b> ' + echappe(p.texte) +
+    '<div class="reco-parcours">' +
+      '<span class="lab">Le parcours qui y répond</span>' +
+      '<span class="nom">' + echappe(p.parcours) + ' · ' + echappe(p.detail) + '</span>' +
+      '<p>' + echappe(p.pourquoi) + '</p>' +
+    '</div>' +
+    '<div class="reco-actions">' +
+      '<a class="btn small" href="/accompagnement/">Découvrir ' + echappe(p.parcours) + '</a>' +
+      '<a class="btn small ghost" href="/live/">Voir le live du 3ᵉ jeudi</a>' +
+      '<a class="btn small ghost" href="/seance-decouverte/">En parler · 45 min offert</a>' +
+    '</div>';
+  r.focus();
 }
 </script>
 <script>
