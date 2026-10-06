@@ -2,12 +2,13 @@
 // La page /quiz/ affiche tout de suite le nom du profil et le score, puis appelle
 // cette fonction avec le prénom, l'adresse et les situations cochées. Elle :
 //   1. recalcule le profil à partir des situations (le texte du mail ne vient jamais du navigateur) ;
-//   2. ajoute le contact aux listes Brevo 3 et 4, seulement si la case de consentement est cochée ;
-//   3. envoie l'analyse complète par mail ;
-//   4. renvoie l'analyse à la page, qui l'affiche aussi.
+//   2. ajoute le contact aux listes Brevo 3 et 4 (la page annonce la newsletter sous le bouton) ;
+//   3. envoie l'analyse par mail : quick win, astuces et questions propres au profil, sans parler des offres ;
+//   4. renvoie l'analyse à la page, qui ne l'affiche en entier que si le mail n'a pas pu partir.
 //
-// Variable d'environnement Netlify : BREVO_API_KEY (déjà utilisée par inscription-live).
+// Variable d'environnement Netlify : BREVO_API_KEY (aussi utilisée par inscription-live).
 // Les seuils et les noms de profils sont repris dans /quiz/index.html : les garder identiques.
+// Contrôle sans envoi : GET /api/resultat-quiz indique si la clé est présente et acceptée par Brevo.
 
 import process from "node:process";
 
@@ -36,27 +37,63 @@ const SITUATIONS = [
 const PROFILS = [
   { max: 3,
     nom: "Vigie ponctuelle",
-    texte: "Ton invisibilité est situationnelle : elle se déclenche dans des contextes précis, pas en permanence. C'est le profil le plus rapide à faire bouger.",
-    parcours: "Focus",
-    detail: "5 séances · 900 €",
-    pourquoi: "Parce qu'il s'agit de dénouer des situations identifiables, pas de déloger un fonctionnement de fond. Un objectif défini dès la première séance, un résultat observable à la dernière." },
+    texte: "Ton invisibilité est situationnelle : elle se déclenche dans des contextes précis, pas en permanence. Ailleurs, tu sais déjà prendre ta place. Le travail consiste à repérer où et quand le mécanisme s'allume, pour reprendre la main à ces moments-là.",
+    quickWin: { titre: "Repère ton déclencheur",
+      texte: "Cette semaine, après chaque réunion, note en une ligne : où tu n'as rien dit, devant qui, et ce que tu aurais voulu dire. En cinq jours, un schéma apparaît : une personne, un type de réunion, un sujet. C'est là que tout se joue." },
+    astuces: [
+      { titre: "Prépare une phrase, pas une présentation.", texte: "Avant la réunion qui te déclenche, écris la phrase que tu veux dire. Une seule. Et dis-la dans les dix premières minutes : plus tu attends, plus elle pèse." },
+      { titre: "Parle une fois en premier.", texte: "Ouvrir la discussion, même par une question, installe ta présence pour toute la suite de la réunion." },
+      { titre: "Remplace « je pense que peut-être » par « je propose ».", texte: "Les précautions oratoires diluent une idée solide. Garde le fond, enlève les excuses." },
+    ],
+    questions: [
+      "Dans quelles situations est-ce que je prends ma place sans même y penser ? Qu'est-ce qui est différent là-bas ?",
+      "Qu'est-ce que je me raconte, juste avant de me taire ?",
+      "La prochaine fois, si je prenais la parole, quel serait le pire qui puisse arriver ? Et le meilleur ?",
+    ] },
   { max: 7,
     nom: "Expert·e en retrait",
-    texte: "Le mécanisme est installé : tu compenses par l'excellence ce que tu n'oses pas encore occuper en présence. Ce n'est plus une situation, c'est un fonctionnement qui se répète.",
-    parcours: "Maîtrise",
-    detail: "8 séances · 1 400 €",
-    pourquoi: "Parce qu'un fonctionnement installé ne se dénoue pas en cinq séances. On cartographie le mécanisme en profondeur, puis on installe la posture et on l'ancre." },
+    texte: "Le mécanisme est installé : tu compenses par l'excellence ce que tu n'oses pas encore occuper en présence. Tu prépares, tu vérifies, tu livres un travail impeccable, et tu laisses ce travail parler pour toi. Le problème, c'est qu'il parle rarement assez fort.",
+    quickWin: { titre: "Dis « j'ai » au lieu de « on a »",
+      texte: "Cette semaine, une fois, en réunion ou dans un mail, attribue-toi ce que tu as fait : « j'ai analysé », « j'ai proposé », « j'ai résolu ». Une seule fois suffit. Puis observe ce qui se passe, chez les autres et en toi." },
+    astuces: [
+      { titre: "Tiens ton journal des réussites.", texte: "Chaque vendredi, trois lignes : ce que tu as fait, ce que ça a permis, qui l'a vu. Dans trois mois, tu sauras parler de toi sans improviser." },
+      { titre: "Fixe une limite à ta préparation.", texte: "Décide à l'avance du temps que tu y consacres. Au-delà, tu ne prépares plus : tu te protèges." },
+      { titre: "Partage tes résultats avant qu'on te les demande.", texte: "Quand un dossier aboutit, deux lignes à ton N+1 suffisent : ce qui est fait, et ce que ça change." },
+    ],
+    questions: [
+      "Qu'est-ce que je crois devoir prouver avant d'avoir le droit de prendre la parole ?",
+      "Qui, autour de moi, connaît vraiment la valeur de mon travail ? Et qui devrait la connaître ?",
+      "Si mon travail ne parlait plus pour moi, qu'est-ce que j'aurais envie de dire ?",
+    ] },
   { max: 12,
     nom: "Invisibilité structurelle",
-    texte: "Tu fonctionnes probablement en sur-adaptation permanente : un coût en énergie, en euros et en trajectoire. Ce n'est pas un trait de personnalité, c'est une posture apprise, donc désapprenable.",
-    parcours: "Prends ta place",
-    detail: "12 séances + 4 ateliers · 2 300 €",
-    pourquoi: "Parce qu'à ce niveau, ce n'est pas un comportement à corriger mais une posture à reconstruire : présence, affirmation, valorisation de soi, sens et direction." },
+    texte: "Tu fonctionnes probablement en sur-adaptation permanente : tu observes, tu ajustes, tu te contiens, presque tout le temps. Ça coûte de l'énergie, souvent plus que le travail lui-même. Ce n'est pas un trait de personnalité, c'est une posture apprise. Et ce qui s'apprend peut se désapprendre.",
+    quickWin: { titre: "Mesure ton énergie, pas tes tâches",
+      texte: "Cinq soirs de suite, en rentrant, note de 1 à 10 ton niveau d'énergie, et le moment de la journée où tu t'es le plus retenu·e. Ce n'est pas une tâche de plus : c'est la carte de ce qui t'épuise vraiment." },
+    astuces: [
+      { titre: "Choisis un seul espace pour commencer.", texte: "Une réunion, une personne, un rituel où tu t'autorises à être la même personne qu'à la maison. Un seul, pas tout à la fois." },
+      { titre: "Nomme l'émotion avant de la ranger.", texte: "Quand quelque chose monte, dis-le-toi : « je suis agacé·e », « je doute ». Nommer une émotion suffit souvent à la faire redescendre." },
+      { titre: "Garde un sas entre le bureau et la maison.", texte: "Cinq minutes dans la voiture, le métro ou devant ta porte pour déposer la journée avant de retrouver les tiens." },
+    ],
+    questions: [
+      "À quel moment de ma vie ai-je appris qu'il valait mieux me contenir ? Est-ce encore vrai aujourd'hui ?",
+      "Qui suis-je quand je ne m'adapte pas ? Où cette version de moi existe-t-elle déjà ?",
+      "De quoi aurais-je besoin pour être un peu plus moi au travail, dès la semaine prochaine ?",
+    ] },
 ];
 
 export const config = { path: "/api/resultat-quiz" };
 
 export default async (req) => {
+  const cleBrevo = process.env.BREVO_API_KEY;
+
+  // Contrôle de configuration, sans envoi ni donnée de compte renvoyée.
+  if (req.method === "GET") {
+    if (!cleBrevo) return json({ cle: false }, 200);
+    const compte = await fetch(`${BREVO}/account`, { headers: { "api-key": cleBrevo, accept: "application/json" } });
+    const detail = compte.ok ? "" : (await compte.text()).slice(0, 300);
+    return json({ cle: true, brevo: compte.status, detail }, 200);
+  }
   if (req.method !== "POST") return json({ erreur: "Méthode non autorisée" }, 405);
 
   // Seule la page du site peut appeler la fonction (domaine principal ou aperçus Netlify).
@@ -82,34 +119,29 @@ export default async (req) => {
   const prenom = String(donnees.prenom || "").replace(/[\u0000-\u001f<>]/g, "").trim().slice(0, 60);
   const coches = [...new Set((Array.isArray(donnees.coches) ? donnees.coches : [])
     .map(Number).filter((i) => Number.isInteger(i) && i >= 0 && i < SITUATIONS.length))].sort((a, b) => a - b);
-  const consentement = donnees.consentement === true;
 
   const score = coches.length;
   const profil = PROFILS.find((p) => score <= p.max);
   const situations = coches.map((i) => SITUATIONS[i]);
   const analyse = { score, profil, situations };
 
-  const cleBrevo = process.env.BREVO_API_KEY;
   if (!cleBrevo) {
     console.error("Configuration incomplète : BREVO_API_KEY absent");
-    return json({ envoye: false, ...analyse }, 200);
+    return json({ envoye: false, raison: "cle", ...analyse }, 200);
   }
   const entetes = { "api-key": cleBrevo, "content-type": "application/json", accept: "application/json" };
 
-  // Le contact n'entre dans les listes qu'avec le consentement explicite.
-  if (consentement) {
-    const contact = await fetch(`${BREVO}/contacts`, {
-      method: "POST",
-      headers: entetes,
-      body: JSON.stringify({
-        email,
-        attributes: prenom ? { PRENOM: prenom } : {},
-        listIds: [LISTE_LIVE, LISTE_NEWSLETTER],
-        updateEnabled: true,
-      }),
-    });
-    if (!contact.ok) console.error("Contact Brevo refusé", contact.status, await contact.text());
-  }
+  const contact = await fetch(`${BREVO}/contacts`, {
+    method: "POST",
+    headers: entetes,
+    body: JSON.stringify({
+      email,
+      attributes: prenom ? { PRENOM: prenom } : {},
+      listIds: [LISTE_LIVE, LISTE_NEWSLETTER],
+      updateEnabled: true,
+    }),
+  });
+  if (!contact.ok) console.error("Contact Brevo refusé", contact.status, await contact.text());
 
   const envoi = await fetch(`${BREVO}/smtp/email`, {
     method: "POST",
@@ -119,13 +151,17 @@ export default async (req) => {
       replyTo: { email: EXPEDITEUR.email },
       to: [prenom ? { email, name: prenom } : { email }],
       subject: `Ton profil d'invisibilité : ${profil.nom}`,
-      htmlContent: mail({ prenom, consentement, ...analyse }),
+      htmlContent: mail({ prenom, ...analyse }),
       tags: ["quiz"],
     }),
   });
-  if (!envoi.ok) console.error("Envoi Brevo refusé", envoi.status, await envoi.text());
+  if (!envoi.ok) {
+    const detail = await envoi.text();
+    console.error("Envoi Brevo refusé", envoi.status, detail);
+    return json({ envoye: false, raison: `brevo ${envoi.status}`, ...analyse }, 200);
+  }
 
-  return json({ envoye: envoi.ok, ...analyse }, 200);
+  return json({ envoye: true, ...analyse }, 200);
 };
 
 function json(objet, status) {
@@ -138,20 +174,21 @@ function echappe(texte) {
 
 // Mail aux couleurs de la charte. Polices de secours (Georgia, Arial, Courier New) :
 // les polices web ne chargent pas dans les messageries.
-function mail({ prenom, consentement, score, profil, situations }) {
+function mail({ prenom, score, profil, situations }) {
   const serif = "Georgia,'Times New Roman',serif";
   const sans = "Arial,Helvetica,sans-serif";
   const mono = "'Courier New',monospace";
-  const etiquette = (t) => `<p style="margin:0 0 6px;font-family:${mono};font-size:12px;letter-spacing:.1em;color:#0F766E">${t}</p>`;
-  const bouton = (href, t) => `<a href="${href}" style="display:inline-block;background:#C6A016;color:#001640;font-family:${sans};font-weight:bold;font-size:15px;text-decoration:none;padding:12px 22px;border-radius:4px">${t}</a>`;
+  const etiquette = (t, couleur = "#0F766E") => `<p style="margin:0 0 8px;font-family:${mono};font-size:12px;letter-spacing:.1em;color:${couleur};font-weight:bold">${t}</p>`;
 
   const liste = situations.length
-    ? `<ul style="margin:0;padding-left:20px">${situations.map((s) => `<li style="margin:0 0 8px">${echappe(s)}</li>`).join("")}</ul>`
-    : `<p style="margin:0">Tu n'as coché aucune situation.</p>`;
+    ? `<ul style="margin:0;padding-left:20px;color:#5B6474">${situations.map((s) => `<li style="margin:0 0 6px">${echappe(s)}</li>`).join("")}</ul>`
+    : `<p style="margin:0;color:#5B6474">Tu n'as coché aucune situation : chez toi, le mécanisme est discret. Ce qui suit t'aide à le repérer le jour où il s'allume.</p>`;
 
-  const piedConsentement = consentement
-    ? "Tu recevras aussi la newsletter du samedi et l'invitation au live mensuel. Chaque mail contient un lien de désabonnement."
-    : "Tu reçois ce mail parce que tu as demandé ton analyse sur kokolawson.com/quiz. Aucun autre mail ne te sera envoyé sans ton accord.";
+  const astuces = profil.astuces.map((a, i) => `
+      <tr><td valign="top" style="width:30px;padding:0 0 14px;font-family:${mono};font-size:14px;color:#8A6D0B;font-weight:bold">0${i + 1}</td>
+      <td style="padding:0 0 14px"><b style="color:#002060">${echappe(a.titre)}</b> ${echappe(a.texte)}</td></tr>`).join("");
+
+  const questions = profil.questions.map((q) => `<p style="margin:0 0 12px;font-family:${serif};font-style:italic;font-size:17px;line-height:1.45;color:#002060">${echappe(q)}</p>`).join("");
 
   return `<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
 <body style="margin:0;padding:0;background:#F2EFE8">
@@ -163,32 +200,35 @@ function mail({ prenom, consentement, score, profil, situations }) {
   </td></tr>
   <tr><td style="padding:28px 30px;font-family:${sans};font-size:15px;line-height:1.6;color:#1D2433">
     <p style="margin:0 0 16px">Bonjour${prenom ? " " + echappe(prenom) : ""},</p>
-    <p style="margin:0 0 24px">Voici ton analyse complète. Prends-la comme une photo de ce qui se joue aujourd'hui, pas comme un verdict.</p>
+    <p style="margin:0 0 24px">Merci d'avoir pris ces deux minutes pour toi. Voici ton analyse, et de quoi avancer dès cette semaine.</p>
 
     ${etiquette("CE QUE TON PROFIL DIT DE TOI")}
-    <p style="margin:0 0 24px">${echappe(profil.texte)}</p>
+    <p style="margin:0 0 18px">${echappe(profil.texte)}</p>
+    ${situations.length ? `<p style="margin:0 0 6px;font-size:14px;color:#5B6474">Les situations que tu as reconnues :</p>` : ""}
+    <div style="margin:0 0 28px;font-size:14px">${liste}</div>
 
-    ${etiquette("LES SITUATIONS QUE TU AS COCHÉES")}
-    <div style="margin:0 0 24px">${liste}</div>
-
-    <div style="border-top:2px solid #C6A016;padding-top:14px;margin:0 0 24px">
-      ${etiquette("LE PARCOURS QUI Y RÉPOND")}
-      <p style="margin:0 0 8px;font-family:${serif};font-size:20px;color:#002060">${echappe(profil.parcours)} · ${echappe(profil.detail)}</p>
-      <p style="margin:0 0 16px;color:#5B6474">${echappe(profil.pourquoi)}</p>
-      ${bouton(`${SITE}/accompagnement/`, `Découvrir ${echappe(profil.parcours)}`)}
+    <div style="background:#002060;border-radius:6px;padding:20px 22px;margin:0 0 28px">
+      <p style="margin:0 0 8px;font-family:${mono};font-size:12px;letter-spacing:.1em;color:#C6A016;font-weight:bold">TON QUICK WIN DE LA SEMAINE</p>
+      <p style="margin:0 0 8px;font-family:${serif};font-size:21px;line-height:1.25;color:#FFFFFF">${echappe(profil.quickWin.titre)}</p>
+      <p style="margin:0;color:#F2EFE8">${echappe(profil.quickWin.texte)}</p>
     </div>
 
-    <div style="background:#F2EFE8;border-left:3px solid #A0563C;padding:16px 18px;margin:0 0 24px">
-      <p style="margin:0 0 8px;font-family:${mono};font-size:12px;letter-spacing:.1em;color:#A0563C;font-weight:bold">À TON RYTHME</p>
-      <p style="margin:0 0 8px"><b>Le live mensuel</b>, chaque 3ᵉ jeudi de 20h à 21h. Tu poses tes questions, ou tu écoutes seulement : tu peux venir sans parler ni allumer ta caméra. <a href="${SITE}/live/" style="color:#0F766E">Voir le live</a></p>
-      <p style="margin:0"><b>La Séance Découverte</b>, 45 minutes offertes pour comprendre ce qui se joue pour toi. <a href="${SITE}/seance-decouverte/" style="color:#0F766E">Choisir un créneau</a></p>
+    ${etiquette("TROIS ASTUCES POUR ALLER PLUS LOIN")}
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 14px;font-family:${sans};font-size:15px;line-height:1.6;color:#1D2433">${astuces}</table>
+
+    <div style="background:#F2EFE8;border-left:3px solid #A0563C;padding:18px 20px;margin:0 0 28px">
+      ${etiquette("TROIS QUESTIONS À TE POSER", "#A0563C")}
+      <p style="margin:0 0 14px;font-size:14px;color:#5B6474">Choisis-en une seule, et laisse-la travailler quelques jours. Les réponses viennent souvent quand on ne les cherche plus.</p>
+      ${questions}
     </div>
+
+    <p style="margin:0 0 24px">Samedi, tu recevras ma newsletter : un concept, une idée utilisable, une astuce applicable dès lundi. Et chaque 3ᵉ jeudi du mois, une invitation à mon live, où tu peux venir sans parler ni allumer ta caméra.</p>
 
     <p style="margin:0;font-family:${serif};font-size:17px;color:#002060">Koko</p>
     <p style="margin:2px 0 0;font-family:${mono};font-size:12px;letter-spacing:.08em;color:#8A6D0B">JE MODÉLISE LA CONFIANCE_</p>
   </td></tr>
   <tr><td style="background:#F2EFE8;padding:14px 30px;font-family:${sans};font-size:12px;line-height:1.5;color:#5B6474">
-    ${piedConsentement}<br>Koko Lawson Adoté · <a href="${SITE}" style="color:#5B6474">kokolawson.com</a> · <a href="${SITE}/mentions-legales/#confidentialite" style="color:#5B6474">Confidentialité</a>
+    Tu reçois ce mail parce que tu as demandé ton analyse sur kokolawson.com/quiz. Chaque newsletter contient un lien de désabonnement.<br>Koko Lawson Adoté · <a href="${SITE}" style="color:#5B6474">kokolawson.com</a> · <a href="${SITE}/mentions-legales/#confidentialite" style="color:#5B6474">Confidentialité</a>
   </td></tr>
 </table>
 </td></tr></table>

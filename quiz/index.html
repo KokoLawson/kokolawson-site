@@ -32,7 +32,7 @@
   .quiz .quiz-form label{display:flex;flex-direction:column;gap:6px;padding:0;border:0;font-size:14px;cursor:default}
   .quiz .quiz-form input[type=text],.quiz .quiz-form input[type=email]{margin:0;height:50px;padding:0 14px;font:16px var(--sans);border:1px solid var(--line);border-radius:4px;background:#fff;color:var(--ink);width:100%;box-sizing:border-box}
   .quiz .quiz-form input:focus-visible{outline:2px solid var(--teal);outline-offset:1px}
-  .quiz .quiz-form label.consent{flex-direction:row;align-items:flex-start;gap:10px;font-size:14.5px;color:var(--muted);cursor:pointer}
+  #quizresult .question{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--navy)}
   .quiz-form .piege{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
   .quiz-form button{align-self:flex-start}
   .quiz-form button[disabled]{opacity:.7;cursor:wait}
@@ -199,8 +199,8 @@
 <script>
 // Auto-diagnostic : 12 affirmations, 3 profils.
 // Le nom du profil et le score s'affichent tout de suite. L'analyse complète
-// (texte, parcours, raisons) est envoyée par mail par netlify/functions/resultat-quiz.mjs,
-// qui la renvoie aussi pour l'afficher ici. Seuils et noms identiques dans les deux fichiers.
+// (texte, quick win, astuces, questions) est envoyée par mail par netlify/functions/resultat-quiz.mjs,
+// qui la renvoie aussi pour l'afficher ici si le mail échoue. Seuils et noms identiques dans les deux fichiers.
 var PROFILS = [
   { max: 3,  nom: "Vigie ponctuelle" },
   { max: 7,  nom: "Expert·e en retrait" },
@@ -224,17 +224,16 @@ function score(){
 
   r.innerHTML =
     '<b>Profil : ' + p.nom + ' (' + n + '/12).</b>' +
-    '<p class="teaser">Ton analyse complète est prête : ce que ce profil dit de toi, les situations que tu as cochées, et le parcours qui y répond. Je te l\'envoie par mail, et elle s\'affiche aussi ici.</p>' +
+    '<p class="teaser">Ton analyse complète est prête : ce que ce profil dit de toi, ton quick win de la semaine, trois astuces et trois questions pour avancer. Je te l\'envoie par mail.</p>' +
     '<form id="quiz-form" class="quiz-form" novalidate>' +
       '<div class="champs">' +
         '<label for="quiz-prenom">Ton prénom<input id="quiz-prenom" name="prenom" type="text" autocomplete="given-name" maxlength="60" placeholder="Prénom"></label>' +
         '<label for="quiz-email">Ton adresse email<input id="quiz-email" name="email" type="email" autocomplete="email" maxlength="200" placeholder="ton@email.com" required></label>' +
       '</div>' +
-      '<label class="consent" for="quiz-consent"><input id="quiz-consent" name="consentement" type="checkbox"> Je veux aussi recevoir la newsletter du samedi et l\'invitation au live mensuel. Désabonnement en un clic.</label>' +
       '<input class="piege" name="site" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">' +
       '<p class="quiz-erreur" role="alert" hidden></p>' +
       '<button class="btn" type="submit">Recevoir mon analyse</button>' +
-      '<p class="mention">TON ADRESSE SERT À T\'ENVOYER TON ANALYSE · AUCUN AUTRE MAIL SANS TON ACCORD</p>' +
+      '<p class="mention">TU REÇOIS AUSSI MA NEWSLETTER DU SAMEDI · DÉSABONNEMENT EN UN CLIC</p>' +
     '</form>';
 
   document.getElementById('quiz-form').addEventListener('submit', envoyer);
@@ -268,7 +267,6 @@ function envoyer(e){
       prenom: f.prenom.value.trim(),
       email: email,
       coches: cochees(),
-      consentement: f.consentement.checked,
       site: f.site.value
     })
   })
@@ -276,7 +274,7 @@ function envoyer(e){
   .then(function(a){
     if (!a.profil) throw new Error('vide');
     afficher(a, email);
-    if (window.gtag) gtag('event', 'quiz_email', { profil: a.profil.nom, consentement: f.consentement.checked });
+    if (window.gtag) gtag('event', 'quiz_email', { profil: a.profil.nom, envoye: a.envoye });
   })
   .catch(function(){
     erreur.textContent = 'L\'envoi n\'a pas abouti, à cause d\'un souci technique de mon côté. Réessaie dans un instant, ou écris-moi à contact@kokolawson.com.';
@@ -286,23 +284,35 @@ function envoyer(e){
   });
 }
 
+// Mail parti : la page résume et renvoie vers la boîte mail.
+// Mail bloqué : la page affiche tout le contenu du mail, pour que rien ne soit perdu.
 function afficher(a, email){
   var p = a.profil, r = document.getElementById('quizresult');
-  var envoi = a.envoye
-    ? '<p class="envoi">C\'est envoyé à ' + echappe(email) + '. Si rien n\'arrive d\'ici quelques minutes, regarde dans tes spams.</p>'
-    : '<p class="envoi">Le mail n\'a pas pu partir, mais ton analyse est juste en dessous. Tu peux aussi m\'écrire à contact@kokolawson.com.</p>';
-  r.innerHTML =
-    envoi +
-    '<b>Profil : ' + echappe(p.nom) + ' (' + a.score + '/12).</b> ' + echappe(p.texte) +
-    '<div class="reco-parcours">' +
-      '<span class="lab">Le parcours qui y répond</span>' +
-      '<span class="nom">' + echappe(p.parcours) + ' · ' + echappe(p.detail) + '</span>' +
-      '<p>' + echappe(p.pourquoi) + '</p>' +
-    '</div>' +
+  var html = '<b>Profil : ' + echappe(p.nom) + ' (' + a.score + '/12).</b> ' + echappe(p.texte);
+
+  if (a.envoye) {
+    html = '<p class="envoi">C\'est envoyé à ' + echappe(email) + '. Ton quick win, tes trois astuces et tes trois questions t\'attendent dans ta boîte mail. Si rien n\'arrive d\'ici quelques minutes, regarde dans tes spams.</p>' + html;
+  } else {
+    html = '<p class="envoi">Le mail n\'a pas pu partir. Voici ton analyse complète, ici.</p>' + html +
+      '<div class="reco-parcours">' +
+        '<span class="lab">Ton quick win de la semaine</span>' +
+        '<span class="nom">' + echappe(p.quickWin.titre) + '</span>' +
+        '<p>' + echappe(p.quickWin.texte) + '</p>' +
+      '</div>' +
+      '<div class="reco-parcours">' +
+        '<span class="lab">Trois astuces pour aller plus loin</span>' +
+        p.astuces.map(function(x){ return '<p><b>' + echappe(x.titre) + '</b> ' + echappe(x.texte) + '</p>'; }).join('') +
+      '</div>' +
+      '<div class="reco-parcours">' +
+        '<span class="lab">Trois questions à te poser</span>' +
+        p.questions.map(function(q){ return '<p class="question">' + echappe(q) + '</p>'; }).join('') +
+      '</div>';
+  }
+
+  r.innerHTML = html +
     '<div class="reco-actions">' +
-      '<a class="btn small" href="/accompagnement/">Découvrir ' + echappe(p.parcours) + '</a>' +
-      '<a class="btn small ghost" href="/live/">Voir le live du 3ᵉ jeudi</a>' +
-      '<a class="btn small ghost" href="/seance-decouverte/">En parler · 45 min offert</a>' +
+      '<a class="btn small" href="/ressources/">Voir les épisodes</a>' +
+      '<a class="btn small ghost" href="/live/">Le live du 3ᵉ jeudi</a>' +
     '</div>';
   r.focus();
 }
