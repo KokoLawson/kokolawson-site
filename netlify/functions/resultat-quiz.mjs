@@ -37,9 +37,9 @@ const SITUATIONS = [
 const PROFILS = [
   { max: 3,
     nom: "Vigie ponctuelle",
-    texte: "Ton invisibilité est situationnelle : elle se déclenche dans des contextes précis, pas en permanence. Ailleurs, tu sais déjà prendre ta place. Le travail consiste à repérer où et quand le mécanisme s'allume, pour reprendre la main à ces moments-là.",
+    texte: "Ton invisibilité est situationnelle : elle se déclenche dans des contextes précis, pas en permanence. Ailleurs, tu sais déjà prendre ta place. Le travail consiste à repérer où et quand le mécanisme s'active, pour reprendre la main à ces moments-là.",
     quickWin: { titre: "Repère ton déclencheur",
-      texte: "Cette semaine, après chaque réunion, note en une ligne : où tu n'as rien dit, devant qui, et ce que tu aurais voulu dire. En cinq jours, un schéma apparaît : une personne, un type de réunion, un sujet. C'est là que tout se joue." },
+      texte: "Cette semaine, après chaque réunion, note dans un carnet : à quel moment tu n'as rien dit, devant qui, et ce que tu aurais voulu dire. En quelques jours, un schéma apparaît : une personne, un type de réunion, un sujet. C'est là que tout se joue." },
     astuces: [
       { titre: "Prépare une phrase, pas une présentation.", texte: "Avant la réunion qui te déclenche, écris la phrase que tu veux dire. Une seule. Et dis-la dans les dix premières minutes : plus tu attends, plus elle pèse." },
       { titre: "Parle une fois en premier.", texte: "Ouvrir la discussion, même par une question, installe ta présence pour toute la suite de la réunion." },
@@ -71,7 +71,7 @@ const PROFILS = [
     quickWin: { titre: "Mesure ton énergie, pas tes tâches",
       texte: "Cinq soirs de suite, en rentrant, note de 1 à 10 ton niveau d'énergie, et le moment de la journée où tu t'es le plus retenu·e. Ce n'est pas une tâche de plus : c'est la carte de ce qui t'épuise vraiment." },
     astuces: [
-      { titre: "Choisis un seul espace pour commencer.", texte: "Une réunion, une personne, un rituel où tu t'autorises à être la même personne qu'à la maison. Un seul, pas tout à la fois." },
+      { titre: "Choisis un seul espace pour commencer.", texte: "Une réunion, un groupe, une personne où tu t'autorises à être la même personne qu'à la maison. Un seul, pas tout à la fois." },
       { titre: "Nomme l'émotion avant de la ranger.", texte: "Quand quelque chose monte, dis-le-toi : « je suis agacé·e », « je doute ». Nommer une émotion suffit souvent à la faire redescendre." },
       { titre: "Garde un sas entre le bureau et la maison.", texte: "Cinq minutes dans la voiture, le métro ou devant ta porte pour déposer la journée avant de retrouver les tiens." },
     ],
@@ -182,7 +182,7 @@ function mail({ prenom, score, profil, situations }) {
 
   const liste = situations.length
     ? `<ul style="margin:0;padding-left:20px;color:#5B6474">${situations.map((s) => `<li style="margin:0 0 6px">${echappe(s)}</li>`).join("")}</ul>`
-    : `<p style="margin:0;color:#5B6474">Tu n'as coché aucune situation : chez toi, le mécanisme est discret. Ce qui suit t'aide à le repérer le jour où il s'allume.</p>`;
+    : `<p style="margin:0;color:#5B6474">Tu n'as coché aucune situation : chez toi, le mécanisme est discret. Ce qui suit t'aide à le repérer le jour où il s'active.</p>`;
 
   const astuces = profil.astuces.map((a, i) => `
       <tr><td valign="top" style="width:30px;padding:0 0 14px;font-family:${mono};font-size:14px;color:#8A6D0B;font-weight:bold">0${i + 1}</td>
@@ -217,13 +217,14 @@ function mail({ prenom, score, profil, situations }) {
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 14px;font-family:${sans};font-size:15px;line-height:1.6;color:#1D2433">${astuces}</table>
 
     <div style="background:#F2EFE8;border-left:3px solid #A0563C;padding:18px 20px;margin:0 0 28px">
-      ${etiquette("TROIS QUESTIONS À TE POSER", "#A0563C")}
+      ${etiquette("TROIS SÉRIES DE QUESTIONS À TE POSER", "#A0563C")}
       <p style="margin:0 0 14px;font-size:14px;color:#5B6474">Choisis-en une seule, et laisse-la travailler quelques jours. Les réponses viennent souvent quand on ne les cherche plus.</p>
       ${questions}
     </div>
 
     <p style="margin:0 0 24px">Samedi, tu recevras ma newsletter : un concept, une idée utilisable, une astuce applicable dès lundi. Et chaque 3ᵉ jeudi du mois, une invitation à mon live, où tu peux venir sans parler ni allumer ta caméra.</p>
 
+    <p style="margin:0 0 12px">Avec gratitude,</p>
     <p style="margin:0;font-family:${serif};font-size:17px;color:#002060">Koko</p>
     <p style="margin:2px 0 0;font-family:${mono};font-size:12px;letter-spacing:.08em;color:#8A6D0B">JE MODÉLISE LA CONFIANCE_</p>
   </td></tr>

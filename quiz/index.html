@@ -224,7 +224,7 @@ function score(){
 
   r.innerHTML =
     '<b>Profil : ' + p.nom + ' (' + n + '/12).</b>' +
-    '<p class="teaser">Ton analyse complète est prête : ce que ce profil dit de toi, ton quick win de la semaine, trois astuces et trois questions pour avancer. Je te l\'envoie par mail.</p>' +
+    '<p class="teaser">Ton analyse complète est prête : ce que ce profil dit de toi, ton quick win de la semaine, trois astuces et trois séries de questions pour avancer. Je te l\'envoie par mail.</p>' +
     '<form id="quiz-form" class="quiz-form" novalidate>' +
       '<div class="champs">' +
         '<label for="quiz-prenom">Ton prénom<input id="quiz-prenom" name="prenom" type="text" autocomplete="given-name" maxlength="60" placeholder="Prénom"></label>' +
@@ -291,7 +291,7 @@ function afficher(a, email){
   var html = '<b>Profil : ' + echappe(p.nom) + ' (' + a.score + '/12).</b> ' + echappe(p.texte);
 
   if (a.envoye) {
-    html = '<p class="envoi">C\'est envoyé à ' + echappe(email) + '. Ton quick win, tes trois astuces et tes trois questions t\'attendent dans ta boîte mail. Si rien n\'arrive d\'ici quelques minutes, regarde dans tes spams.</p>' + html;
+    html = '<p class="envoi">C\'est envoyé à ' + echappe(email) + '. Ton quick win, tes trois astuces et tes trois séries de questions t\'attendent dans ta boîte mail. Si rien n\'arrive d\'ici quelques minutes, regarde dans tes spams.</p>' + html;
   } else {
     html = '<p class="envoi">Le mail n\'a pas pu partir. Voici ton analyse complète, ici.</p>' + html +
       '<div class="reco-parcours">' +
@@ -304,7 +304,7 @@ function afficher(a, email){
         p.astuces.map(function(x){ return '<p><b>' + echappe(x.titre) + '</b> ' + echappe(x.texte) + '</p>'; }).join('') +
       '</div>' +
       '<div class="reco-parcours">' +
-        '<span class="lab">Trois questions à te poser</span>' +
+        '<span class="lab">Trois séries de questions à te poser</span>' +
         p.questions.map(function(q){ return '<p class="question">' + echappe(q) + '</p>'; }).join('') +
       '</div>';
   }
