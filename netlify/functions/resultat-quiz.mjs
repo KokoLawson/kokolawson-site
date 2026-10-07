@@ -2,7 +2,8 @@
 // La page /quiz/ affiche tout de suite le nom du profil et le score, puis appelle
 // cette fonction avec le prénom, l'adresse et les situations cochées. Elle :
 //   1. recalcule le profil à partir des situations (le texte du mail ne vient jamais du navigateur) ;
-//   2. ajoute le contact aux listes Brevo 3 et 4 (la page annonce la newsletter sous le bouton) ;
+//   2. ajoute le contact aux listes Brevo 3 et 4 (la page annonce la newsletter sous le bouton),
+//      avec son profil, son score, ses situations et la date du quiz (champs QUIZ_*) ;
 //   3. envoie l'analyse par mail : quick win, astuces et questions propres au profil, sans parler des offres ;
 //   4. renvoie l'analyse à la page, qui ne l'affiche en entier que si le mail n'a pas pu partir.
 //
@@ -142,7 +143,15 @@ export default async (req) => {
     headers: entetes,
     body: JSON.stringify({
       email,
-      attributes: prenom ? { PRENOM: prenom } : {},
+      // Champs QUIZ_* créés dans Brevo le 7 octobre 2026. Situations : numéros des cases cochées,
+      // de 1 à 12 dans l'ordre de la page (voir SITUATIONS). Un nouveau quiz écrase le précédent.
+      attributes: {
+        ...(prenom ? { PRENOM: prenom } : {}),
+        QUIZ_PROFIL: profil.nom,
+        QUIZ_SCORE: score,
+        QUIZ_SITUATIONS: coches.map((i) => i + 1).join(", "),
+        QUIZ_DATE: new Date().toISOString().slice(0, 10),
+      },
       listIds: [LISTE_LIVE, LISTE_NEWSLETTER],
       updateEnabled: true,
     }),
