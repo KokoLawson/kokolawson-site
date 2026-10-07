@@ -5,7 +5,8 @@
 //   2. ajoute le contact aux listes Brevo 3 et 4 (la page annonce la newsletter sous le bouton),
 //      avec son profil, son score, ses situations et la date du quiz (champs QUIZ_*) ;
 //   3. envoie l'analyse par mail : quick win, astuces et questions propres au profil, sans parler des offres ;
-//   4. renvoie l'analyse à la page, qui ne l'affiche en entier que si le mail n'a pas pu partir.
+//   4. envoie une copie à contact@kokolawson.com, précédée d'un encadré de suivi (qui, profil, situations) ;
+//   5. renvoie l'analyse à la page, qui ne l'affiche en entier que si le mail n'a pas pu partir.
 //
 // Variable d'environnement Netlify : BREVO_API_KEY (aussi utilisée par inscription-live).
 // Les seuils et les noms de profils sont repris dans /quiz/index.html : les garder identiques.
@@ -158,6 +159,7 @@ export default async (req) => {
   });
   if (!contact.ok) console.error("Contact Brevo refusé", contact.status, await contact.text());
 
+  const html = mail({ prenom, ...analyse });
   const envoi = await fetch(`${BREVO}/smtp/email`, {
     method: "POST",
     headers: entetes,
@@ -166,18 +168,63 @@ export default async (req) => {
       replyTo: { email: EXPEDITEUR.email },
       to: [prenom ? { email, name: prenom } : { email }],
       subject: `Ton profil d'invisibilité : ${profil.nom}`,
-      htmlContent: mail({ prenom, ...analyse }),
+      htmlContent: html,
       tags: ["quiz"],
     }),
   });
-  if (!envoi.ok) {
-    const detail = await envoi.text();
-    console.error("Envoi Brevo refusé", envoi.status, detail);
-    return json({ envoye: false, raison: `brevo ${envoi.status}`, ...analyse }, 200);
-  }
+  const raison = envoi.ok ? "" : `brevo ${envoi.status}`;
+  if (!envoi.ok) console.error("Envoi Brevo refusé", envoi.status, await envoi.text());
 
+  // Copie pour Koko, pour suivre les quiz en direct : un encadré (qui, profil, situations),
+  // puis le mail tel que la personne l'a reçu. Répondre à la copie écrit à la personne.
+  const copie = await fetch(`${BREVO}/smtp/email`, {
+    method: "POST",
+    headers: entetes,
+    body: JSON.stringify({
+      sender: EXPEDITEUR,
+      replyTo: prenom ? { email, name: prenom } : { email },
+      to: [{ email: EXPEDITEUR.email }],
+      subject: `Quiz : ${prenom || email} · ${profil.nom} (${score}/12)`,
+      htmlContent: avecEncadre(html, { prenom, email, score, profil, coches, envoye: envoi.ok, raison }),
+      tags: ["quiz-copie"],
+    }),
+  });
+  if (!copie.ok) console.error("Copie Brevo refusée", copie.status, await copie.text());
+
+  if (!envoi.ok) return json({ envoye: false, raison, ...analyse }, 200);
   return json({ envoye: true, ...analyse }, 200);
 };
+
+// Ajoute en tête du mail l'encadré de suivi destiné à Koko.
+function avecEncadre(html, { prenom, email, score, profil, coches, envoye, raison }) {
+  const sans = "Arial,Helvetica,sans-serif";
+  const mono = "'Courier New',monospace";
+  const quand = new Date().toLocaleString("fr-FR", { timeZone: "Europe/Paris", dateStyle: "full", timeStyle: "short" });
+  const ligne = (etiquette, valeur) => `<tr><td valign="top" style="padding:4px 12px 4px 0;font-family:${mono};font-size:12px;letter-spacing:.06em;color:#5B6474;white-space:nowrap">${etiquette}</td><td style="padding:4px 0;font-family:${sans};font-size:15px;color:#1D2433">${valeur}</td></tr>`;
+  const situations = coches.length
+    ? `<ol style="margin:0;padding-left:20px">${coches.map((i) => `<li value="${i + 1}" style="margin:0 0 4px">${echappe(SITUATIONS[i])}</li>`).join("")}</ol>`
+    : "Aucune";
+  const statut = envoye ? "Envoyé" : `<b style="color:#A0563C">Non parti (${echappe(raison)})</b>`;
+
+  const encadre = `
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td align="center" style="padding:24px 12px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;background:#FFFFFF;border:2px solid #C6A016;border-radius:8px">
+  <tr><td style="padding:20px 24px">
+    <p style="margin:0 0 12px;font-family:${mono};font-size:12px;letter-spacing:.1em;color:#8A6D0B;font-weight:bold">COPIE · NOUVEAU QUIZ · ${echappe(quand)}</p>
+    <table role="presentation" cellpadding="0" cellspacing="0">
+      ${ligne("PRÉNOM", echappe(prenom || "non renseigné"))}
+      ${ligne("ADRESSE", echappe(email))}
+      ${ligne("PROFIL", `${echappe(profil.nom)} (${score}/12)`)}
+      ${ligne("SITUATIONS", situations)}
+      ${ligne("MAIL", statut)}
+    </table>
+    <p style="margin:12px 0 0;font-family:${sans};font-size:13px;color:#5B6474">Répondre à ce mail écrit directement à ${echappe(prenom || email)}. Le mail reçu suit, tel quel.</p>
+  </td></tr>
+</table>
+</td></tr></table>`;
+
+  return html.replace(/(<body[^>]*>)/, `$1${encadre}`);
+}
 
 function json(objet, status) {
   return new Response(JSON.stringify(objet), { status, headers: { "content-type": "application/json; charset=utf-8" } });
