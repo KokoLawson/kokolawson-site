@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mini-test : tes drivers, lequel te pilote ?</title>
+<meta name="description" content="Sois parfait·e, sois fort·e, fais plaisir : 12 cartes, 2 minutes pour découvrir le driver qui pilote tes journées, ta permission et ton quick win de la semaine.">
+<link rel="canonical" href="https://kokolawson.com/drivers/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mini-test : tes drivers, lequel te pilote ?">
+<meta property="og:description" content="Sois parfait·e, sois fort·e, fais plaisir : 12 cartes, 2 minutes pour découvrir le driver qui pilote tes journées, ta permission et ton quick win de la semaine.">
+<meta property="og:url" content="https://kokolawson.com/drivers/">
+<meta property="og:image" content="https://kokolawson.com/photo-koko.jpg">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23002060'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='36' font-weight='bold' fill='%23C6A016' text-anchor='middle'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<style>
+  /* Mini-test en cartes : une affirmation à la fois, la suivante s'affiche après la réponse. */
+  .dt{max-width:680px;margin:0 auto}
+  .dt-prog{display:flex;align-items:center;gap:14px;margin-bottom:16px;font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;color:var(--muted)}
+  .dt-barre{flex:1;height:6px;background:var(--line);border-radius:3px;overflow:hidden}
+  .dt-barre span{display:block;height:100%;width:0;background:var(--gold);transition:width .3s ease}
+  .dt-carte{background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:0 10px 30px rgba(0,32,96,.08);padding:38px 34px 30px;min-height:330px;display:flex;flex-direction:column;gap:22px;transition:opacity .22s ease,transform .22s ease}
+  .dt-carte.sortie{opacity:0;transform:translateX(-24px)}
+  .dt-carte.entree{opacity:0;transform:translateX(24px)}
+  .dt-num{font-family:var(--mono);font-size:13px;font-weight:500;letter-spacing:.1em;color:var(--gold-dark)}
+  .dt-texte{font-family:var(--serif);font-size:clamp(21px,3vw,26px);line-height:1.35;color:var(--navy);margin:0;outline:none}
+  .dt-choix{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:auto}
+  .dt-choix button{font:600 15.5px var(--sans);color:var(--navy);background:var(--cream);border:1.5px solid var(--line);border-radius:8px;padding:14px 12px;cursor:pointer;transition:background .15s,border-color .15s}
+  .dt-choix button:hover{border-color:var(--gold)}
+  .dt-choix button:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+  .dt-choix button[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
+  .dt-retour{align-self:flex-start;background:none;border:0;padding:0;font:500 13px var(--mono);letter-spacing:.06em;color:var(--teal);cursor:pointer}
+  .dt-retour[hidden]{display:none}
+  .dt-note{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-top:16px;text-align:center}
+  @media(max-width:560px){.dt-carte{padding:26px 18px 20px;min-height:0;gap:18px}.dt-choix button{padding:13px 8px;font-size:15px}}
+  @media (prefers-reduced-motion:reduce){.dt-carte,.dt-barre span{transition:none}}
+
+  /* Résultat */
+  .dt-res{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:34px;display:flex;flex-direction:column;gap:18px}
+  .dt-res h2{margin:0;font-size:clamp(24px,3.4vw,32px);color:var(--navy)}
+  .dt-res .k{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--teal);text-transform:uppercase}
+  .dt-scores{display:flex;flex-direction:column;gap:10px}
+  .dt-score{display:grid;grid-template-columns:150px 1fr 150px;gap:12px;align-items:center;font-size:15px}
+  .dt-score .nom{color:var(--navy);font-weight:600}
+  .dt-score .piste{height:10px;background:var(--line);border-radius:5px;overflow:hidden}
+  .dt-score .piste span{display:block;height:100%;background:var(--gold);border-radius:5px}
+  .dt-score .val{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+  .dt-score.dom .nom{color:var(--gold-dark)}
+  @media(max-width:560px){.dt-res{padding:24px 20px}.dt-score{grid-template-columns:1fr 130px}.dt-score .piste{grid-column:1/-1;grid-row:2}}
+  .dt-teaser{color:var(--muted);font-size:15.5px;margin:0}
+  .dt-form{display:flex;flex-direction:column;gap:14px}
+  .dt-form .champs{display:grid;grid-template-columns:1fr 1.3fr;gap:14px}
+  .dt-form label{display:flex;flex-direction:column;gap:6px;font-size:14px}
+  .dt-form input{height:50px;padding:0 14px;font:16px var(--sans);border:1px solid var(--line);border-radius:4px;background:#fff;color:var(--ink);width:100%;box-sizing:border-box}
+  .dt-form input:focus-visible{outline:2px solid var(--teal);outline-offset:1px}
+  .dt-form button{align-self:flex-start}
+  .dt-form button[disabled]{opacity:.7;cursor:wait}
+  .dt-erreur{font-size:14.5px;color:#661d1d;background:#ffeded;border-radius:4px;padding:8px 12px;margin:0}
+  .dt-mention{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin:0}
+  .dt-envoi{font-size:15px;color:var(--teal);font-weight:700;margin:0}
+  .dt-fiche{border-top:2px solid var(--gold);padding-top:16px;display:flex;flex-direction:column;gap:8px}
+  .dt-fiche h3{margin:0;color:var(--navy);font-size:22px}
+  .dt-fiche .lab{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-top:6px}
+  .dt-fiche p{margin:0;font-size:15.5px}
+  .dt-fiche .perm{font-family:var(--serif);font-style:italic;color:var(--navy);font-size:17px}
+  .dt-actions{display:flex;gap:10px;flex-wrap:wrap}
+  @media(max-width:560px){.dt-form .champs{grid-template-columns:1fr}.dt-form button{align-self:stretch}}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://kokolawson.com/drivers/#page",
+      "url": "https://kokolawson.com/drivers/",
+      "name": "Mini-test : tes drivers, lequel te pilote ?",
+      "description": "Mini-test en 12 cartes pour repérer son driver dominant parmi sois parfait, sois fort et fais plaisir, avec la permission et le quick win associés.",
+      "inLanguage": "fr-FR",
+      "isPartOf": { "@id": "https://kokolawson.com/#website" },
+      "author": { "@id": "https://kokolawson.com/#koko" },
+      "about": [
+        { "@type": "Thing", "name": "Drivers en analyse transactionnelle" },
+        { "@type": "Thing", "name": "Perfectionnisme au travail" },
+        { "@type": "Thing", "name": "Savoir dire non" }
+      ]
+    },
+    { "@type": "BreadcrumbList", "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://kokolawson.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Mini-test des drivers", "item": "https://kokolawson.com/drivers/" } ] }
+  ]
+}
+</script>
+</head>
+<body>
+<nav>
+  <div class="wrap navin">
+    <a class="logo" href="/">Koko Lawson <span>Adoté</span></a>
+    <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false" onclick="this.classList.toggle('open');document.querySelector('.menu').classList.toggle('open');this.setAttribute('aria-expanded',this.classList.contains('open'))">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="menu">
+      <a href="/">Accueil</a>
+      <a href="/accompagnement/">L'accompagnement</a>
+      <a href="/articles/">Articles</a>
+      <a href="/ressources/">Ressources</a>
+      <a href="/temoignages/">Témoignages</a>
+      <a class="btn small" href="/seance-decouverte/">Séance Découverte · offert</a>
+    </div>
+  </div>
+</nav>
+
+<section class="minihero">
+  <div class="wrap">
+    <span class="epi">MINI-TEST · 12 CARTES · 2 MINUTES</span>
+    <h1>Tes drivers : <em>lequel te pilote ?</em></h1>
+    <p class="sub">Sois parfait·e, sois fort·e, fais plaisir. Une carte à la fois : choisis ta réponse, la suivante s'affiche toute seule. À la fin, tu découvres le driver qui pilote tes journées.</p>
+  </div>
+</section>
+
+<section><div class="wrap">
+  <div class="dt" id="dt">
+    <div class="dt-prog" aria-live="polite"><span id="dt-compte">Carte 1 sur 12</span><div class="dt-barre" aria-hidden="true"><span id="dt-barre"></span></div></div>
+    <div class="dt-carte" id="dt-carte">
+      <span class="dt-num" id="dt-num">01 / 12</span>
+      <p class="dt-texte" id="dt-texte" tabindex="-1">Je relis plusieurs fois un document, même quand le délai est court.</p>
+      <div class="dt-choix" id="dt-choix" role="group" aria-label="Ta réponse">
+        <button type="button" data-v="0">Jamais</button>
+        <button type="button" data-v="1">Parfois</button>
+        <button type="button" data-v="2">Souvent</button>
+        <button type="button" data-v="3">Presque toujours</button>
+      </div>
+      <button type="button" class="dt-retour" id="dt-retour" hidden>← Carte précédente</button>
+    </div>
+    <p class="dt-note">OUTIL D'AUTO-OBSERVATION INSPIRÉ DES DRIVERS DE TAIBI KAHLER · CE N'EST PAS UN TEST SCIENTIFIQUE</p>
+    <noscript><p>Ce mini-test a besoin de JavaScript pour afficher les cartes.</p></noscript>
+  </div>
+  <div class="dt" id="dt-resultat" hidden></div>
+</div></section>
+
+<div class="cta-band">
+  <p class="tagline" style="margin-bottom:14px">PREMIER PAS · SANS ENGAGEMENT_</p>
+  <h2>45 minutes pour comprendre <em>ce qui se joue pour toi</em></h2>
+  <p style="color:#b9c3dd;max-width:540px;margin:0 auto 26px">Ton résultat te dit quel driver te pilote. La Séance Découverte te dit quoi en faire.</p>
+  <a class="btn" href="/seance-decouverte/">Réserver ma Séance Découverte · 45 min, offert</a>
+</div>
+
+<footer class="site">
+  <div class="wrap foot">
+    <div>
+      <p style="font-family:var(--serif);color:#fff;font-size:17px">Koko Lawson Adoté</p>
+      <p style="font-family:var(--mono);font-size:12px;color:var(--gold);margin-top:4px">JE MODÉLISE LA CONFIANCE_</p>
+      <p style="margin-top:8px">Coach co-active · Actuaire · Méthode CInA®</p>
+    </div>
+    <div>
+      <p><a href="https://www.linkedin.com/in/koko-lawson-adote/">LinkedIn</a> · <a href="https://www.youtube.com/@KokoLawson-A">YouTube</a> · <a href="mailto:contact@kokolawson.com">contact@kokolawson.com</a></p>
+      <p style="margin-top:8px;font-size:12.5px">Auto-entrepreneur · Activité non réglementée · TVA non applicable, art. 293B du CGI</p>
+      <p style="margin-top:6px;font-size:12.5px"><a href="/mentions-legales/#mentions">Mentions légales</a> · <a href="/mentions-legales/#confidentialite">Confidentialité</a> · <a href="/mentions-legales/#cookies">Politique cookies</a> · <a href="/mentions-legales/#gerer-cookies">Gérer les cookies</a></p>
+    </div>
+  </div>
+</footer>
+<script>
+// Mini-test des drivers : 12 cartes, une à la fois. Les affirmations, l'ordre des drivers et les seuils
+// sont repris dans netlify/functions/resultat-drivers.mjs, qui envoie le résultat complet : les garder identiques.
+var CARTES = [
+  ['parfait', "Je relis plusieurs fois un document, même quand le délai est court."],
+  ['plaisir', "J'accepte une demande alors que mon agenda est déjà plein."],
+  ['fort', "Je préfère gérer seul·e une situation difficile plutôt que demander de l'aide."],
+  ['parfait', "Il m'arrive de retarder un rendu parce que je vérifie encore."],
+  ['plaisir', "En réunion, j'hésite à contredire une idée, de peur de froisser."],
+  ['fort', "J'accepte une charge de travail lourde sans signaler que c'est trop."],
+  ['parfait', "Une petite erreur peut occuper mon esprit toute la soirée."],
+  ['plaisir', "Je me sens responsable de l'humeur des personnes autour de moi."],
+  ['fort', "Au travail, montrer que quelque chose me touche me semble être un signe de faiblesse."],
+  ['parfait', "Je vis un retour sur mon travail comme un jugement sur moi."],
+  ['plaisir', "Après un échange tendu, je me demande pendant des heures si l'autre m'en veut."],
+  ['fort', "Je continue à travailler même quand je suis épuisé·e ou malade."]
+];
+var NOMS = { parfait: '🎯 Sois parfait·e', plaisir: '🤝 Fais plaisir', fort: '🪨 Sois fort·e' };
+var ORDRE = ['parfait', 'plaisir', 'fort'];
+var SEUIL_DISCRET = 4;
+var reponses = [], carte = 0, formAffiche = 0, enCours = false;
+
+function echappe(t){
+  return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function deux(n){ return (n < 10 ? '0' : '') + n; }
+function niveau(n){ return n <= SEUIL_DISCRET ? 'discret' : n <= 8 ? 'présent' : 'très présent'; }
+
+function afficheCarte(focus){
+  document.getElementById('dt-num').textContent = deux(carte + 1) + ' / 12';
+  document.getElementById('dt-texte').textContent = CARTES[carte][1];
+  document.getElementById('dt-compte').textContent = 'Carte ' + (carte + 1) + ' sur 12';
+  document.getElementById('dt-barre').style.width = (carte / 12 * 100) + '%';
+  document.getElementById('dt-retour').hidden = carte === 0;
+  var boutons = document.querySelectorAll('#dt-choix button');
+  for (var i = 0; i < boutons.length; i++) {
+    boutons[i].setAttribute('aria-pressed', String(reponses[carte] === Number(boutons[i].dataset.v)));
+  }
+  if (focus) document.getElementById('dt-texte').focus({ preventScroll: true });
+}
+
+// Petite transition : la carte sort à gauche, la suivante entre par la droite.
+function changeCarte(nouvelle){
+  if (enCours) return;
+  enCours = true;
+  var el = document.getElementById('dt-carte');
+  var reduit = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduit) { carte = nouvelle; afficheCarte(true); enCours = false; return; }
+  el.classList.add('sortie');
+  setTimeout(function(){
+    carte = nouvelle;
+    afficheCarte(false);
+    el.classList.remove('sortie');
+    el.classList.add('entree');
+    // Minuterie plutôt que requestAnimationFrame : elle avance aussi quand l'onglet est en arrière-plan.
+    setTimeout(function(){
+      el.classList.remove('entree');
+      document.getElementById('dt-texte').focus({ preventScroll: true });
+      enCours = false;
+    }, 30);
+  }, 220);
+}
+
+document.getElementById('dt-choix').addEventListener('click', function(e){
+  var b = e.target.closest('button');
+  if (!b || enCours) return;
+  reponses[carte] = Number(b.dataset.v);
+  b.setAttribute('aria-pressed', 'true');
+  if (carte < CARTES.length - 1) setTimeout(function(){ changeCarte(carte + 1); }, 150);
+  else { enCours = true; setTimeout(function(){ enCours = false; termine(); }, 150); }
+});
+document.getElementById('dt-retour').addEventListener('click', function(){
+  if (carte > 0) changeCarte(carte - 1);
+});
+
+function calcule(){
+  var scores = { parfait: 0, plaisir: 0, fort: 0 };
+  reponses.forEach(function(r, i){ scores[CARTES[i][0]] += r; });
+  var max = Math.max(scores.parfait, scores.plaisir, scores.fort);
+  var discrets = max <= SEUIL_DISCRET;
+  var dominants = discrets ? [] : ORDRE.filter(function(k){ return scores[k] === max; });
+  return { scores: scores, discrets: discrets, dominants: dominants };
+}
+
+function barres(r){
+  return '<div class="dt-scores">' + ORDRE.map(function(k){
+    var n = r.scores[k];
+    return '<div class="dt-score' + (r.dominants.indexOf(k) >= 0 ? ' dom' : '') + '">' +
+      '<span class="nom">' + NOMS[k] + '</span>' +
+      '<span class="piste"><span style="width:' + Math.round(n / 12 * 100) + '%"></span></span>' +
+      '<span class="val">' + n + '/12 · ' + niveau(n) + '</span></div>';
+  }).join('') + '</div>';
+}
+
+function titre(r){
+  if (r.discrets) return '🌿 Tes drivers restent discrets';
+  return (r.dominants.length > 1 ? 'Tes drivers dominants : ' : 'Ton driver dominant : ') +
+    r.dominants.map(function(k){ return NOMS[k]; }).join(' et ');
+}
+
+function termine(){
+  var r = calcule();
+  document.getElementById('dt-barre').style.width = '100%';
+  document.getElementById('dt').hidden = true;
+  var res = document.getElementById('dt-resultat');
+  res.innerHTML =
+    '<div class="dt-res">' +
+      '<span class="k">Ton résultat</span>' +
+      '<h2>' + titre(r) + '</h2>' +
+      barres(r) +
+      '<p class="dt-teaser">Ton résultat complet est prêt : ce que ton driver te dit, sa force, ce qu\'il te coûte, ta permission, ton quick win de la semaine et ta question pour avancer. Je te l\'envoie par mail.</p>' +
+      '<form class="dt-form" id="dt-form" novalidate>' +
+        '<div class="champs">' +
+          '<label for="dt-prenom">Ton prénom<input id="dt-prenom" name="prenom" type="text" autocomplete="given-name" maxlength="60" placeholder="Prénom"></label>' +
+          '<label for="dt-email">Ton adresse email<input id="dt-email" name="email" type="email" autocomplete="email" maxlength="200" placeholder="ton@email.com" required></label>' +
+        '</div>' +
+        '<p class="dt-erreur" role="alert" hidden></p>' +
+        '<button class="btn" type="submit">Recevoir mon résultat complet</button>' +
+        '<p class="dt-mention">TU REÇOIS AUSSI MA NEWSLETTER DU SAMEDI ET MES INVITATIONS À MES LIVES DU JEUDI · DÉSABONNEMENT EN UN CLIC</p>' +
+      '</form>' +
+      '<div class="dt-actions"><button type="button" class="btn small ghost" id="dt-refaire">Refaire le test</button></div>' +
+    '</div>';
+  res.hidden = false;
+  formAffiche = Date.now();
+  document.getElementById('dt-form').addEventListener('submit', envoyer);
+  document.getElementById('dt-refaire').addEventListener('click', recommence);
+  res.querySelector('h2').setAttribute('tabindex', '-1');
+  res.querySelector('h2').focus();
+  if (window.gtag) gtag('event', 'drivers_termine', { resultat: titre(r) });
+}
+
+function recommence(){
+  reponses = []; carte = 0;
+  document.getElementById('dt-resultat').hidden = true;
+  document.getElementById('dt').hidden = false;
+  afficheCarte(true);
+}
+
+function envoyer(e){
+  e.preventDefault();
+  var f = e.target, bouton = f.querySelector('button'), erreur = f.querySelector('.dt-erreur');
+  var email = f.email.value.trim();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    erreur.textContent = 'Vérifie ton adresse email : elle semble incomplète.';
+    erreur.hidden = false;
+    f.email.focus();
+    return;
+  }
+  erreur.hidden = true;
+  bouton.disabled = true;
+  bouton.textContent = 'Envoi en cours…';
+
+  fetch('/api/resultat-drivers', {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({ prenom: f.prenom.value.trim(), email: email, reponses: reponses, delai: Date.now() - formAffiche })
+  })
+  .then(function(rep){
+    if (!rep.ok) throw new Error('HTTP ' + rep.status);
+    return rep.json().catch(function(){ throw new Error('réponse illisible'); });
+  })
+  .then(function(a){
+    if (!a.scores) throw new Error('vide');
+    afficheEnvoi(a, email);
+    if (window.gtag) gtag('event', 'drivers_email', { resultat: a.titre, envoye: a.envoye });
+  })
+  .catch(function(err){
+    // Le code entre parenthèses sert au diagnostic : statut HTTP, réponse illisible ou erreur réseau du navigateur.
+    erreur.textContent = 'L\'envoi n\'a pas abouti, à cause d\'un souci technique de mon côté. Réessaie dans un instant, ou écris-moi à contact@kokolawson.com. (code : ' + ((err && (err.name + ' ' + err.message)) || 'inconnu') + ')';
+    erreur.hidden = false;
+    bouton.disabled = false;
+    bouton.textContent = 'Recevoir mon résultat complet';
+  });
+}
+
+// Mail parti : la page renvoie vers la boîte mail. Mail bloqué : la page affiche tout le résultat.
+function afficheEnvoi(a, email){
+  var f = document.getElementById('dt-form');
+  var html;
+  if (a.envoye) {
+    html = '<p class="dt-envoi">C\'est envoyé à ' + echappe(email) + '. Ton résultat complet t\'attend dans ta boîte mail. Si rien n\'arrive d\'ici quelques minutes, regarde dans tes spams.</p>';
+  } else {
+    html = '<p class="dt-envoi">Le mail n\'a pas pu partir. Voici ton résultat complet, ici.</p>';
+    if (a.discrets && a.discret) {
+      html += '<div class="dt-fiche"><h3>' + echappe(a.discret.emoji + ' ' + a.discret.nom) + '</h3>' +
+        '<p class="lab">Ce que ça veut dire</p><p>' + echappe(a.discret.texte) + '</p>' +
+        '<p class="lab">À observer</p><p>' + echappe(a.discret.observer) + '</p>' +
+        '<p class="lab">Ta question</p><p class="perm">' + echappe(a.discret.question) + '</p></div>';
+    }
+    (a.fiches || []).forEach(function(d){
+      html += '<div class="dt-fiche"><h3>' + echappe(d.emoji + ' ' + d.nom) + '</h3>' +
+        '<p class="lab">Le message intérieur</p><p>' + echappe(d.message) + '</p>' +
+        '<p class="lab">La question cachée</p><p>' + echappe(d.cachee) + '</p>' +
+        '<p class="lab">Ta force</p><p>' + echappe(d.force) + '</p>' +
+        '<p class="lab">Quand il en fait trop</p><p>' + echappe(d.trop) + '</p>' +
+        '<p class="lab">Comment le repérer</p><p>' + echappe(d.reperer) + '</p>' +
+        '<p class="lab">Ta permission</p><p class="perm">' + echappe(d.permission) + '</p>' +
+        '<p class="lab">★ Ton quick win de la semaine</p><p>' + echappe(d.quickWin) + '</p>' +
+        '<p class="lab">Deux autres pistes</p><p>' + d.pistes.map(echappe).join('<br>') + '</p>' +
+        '<p class="lab">Ta question</p><p class="perm">' + echappe(d.question) + '</p></div>';
+    });
+  }
+  var bloc = document.createElement('div');
+  bloc.style.display = 'flex'; bloc.style.flexDirection = 'column'; bloc.style.gap = '18px';
+  bloc.innerHTML = html;
+  f.replaceWith(bloc);
+  document.querySelector('.dt-teaser').hidden = true;
+}
+
+afficheCarte(false);
+</script>
+
+<script src="/cookie-consent.js"></script>
+
+</body>
+</html>
